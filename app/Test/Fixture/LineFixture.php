@@ -3,14 +3,19 @@
  * LineFixture
  *
  */
-class LineFixture extends CakeTestFixture {
+App::uses('SQLTestFixture', 'Fixturize.TestSuite/Fixture');
+ 
+//class LineFixture extends CakeTestFixture {
+class LineFixture extends SQLTestFixture {
+
+	public $file = 'phpunit_cucumber.sql';
 
 /**
  * Fields
  *
  * @var array
  */
-	public $fields = array(
+/*	public $fields = array(
 		'id' => array('type' => 'integer', 'null' => false, 'default' => null, 'key' => 'primary'),
 		'name' => array('type' => 'string', 'null' => false, 'default' => null, 'length' => 5, 'collate' => 'utf8_general_ci', 'charset' => 'utf8'),
 		'colour' => array('type' => 'string', 'null' => false, 'default' => null, 'length' => 6, 'collate' => 'utf8_general_ci', 'charset' => 'utf8'),
@@ -22,13 +27,13 @@ class LineFixture extends CakeTestFixture {
 		),
 		'tableParameters' => array('charset' => 'utf8', 'collate' => 'utf8_general_ci', 'engine' => 'InnoDB')
 	);
-
+*/
 /**
  * Records
  *
  * @var array
  */
-	public $records = array(
+/*	public $records = array(
 		array(
 			'id' => 1,
 			'name' => 'Lor',
@@ -38,5 +43,5 @@ class LineFixture extends CakeTestFixture {
 			'active' => 1
 		),
 	);
-
+*/
 }

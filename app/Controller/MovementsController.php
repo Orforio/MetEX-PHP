@@ -33,7 +33,7 @@ class MovementsController extends AppController {
  * @param string $id
  * @return void
  */
-	public function view($id = null) {
+	public function admin_view($id = null) {
 		if (!$this->Movement->exists($id)) {
 			throw new NotFoundException(__('Invalid movement'));
 		}
@@ -42,16 +42,16 @@ class MovementsController extends AppController {
 	}
 
 /**
- * add method
+ * admin_add method
  *
  * @return void
  */
-	public function add() {
+	public function admin_add() {
 		if ($this->request->is('post')) {
 			$this->Movement->create();
 			if ($this->Movement->save($this->request->data)) {
 				$this->Session->setFlash(__('The movement has been saved.'));
-				return $this->redirect(array('action' => 'add'));
+				return $this->redirect(array('admin' => true, 'action' => 'add'));
 			} else {
 				$this->Session->setFlash(__('The movement could not be saved. Please, try again.'));
 			}
@@ -61,20 +61,20 @@ class MovementsController extends AppController {
 	}
 
 /**
- * edit method
+ * admin_edit method
  *
  * @throws NotFoundException
  * @param string $id
  * @return void
  */
-	public function edit($id = null) {
+	public function admin_edit($id = null) {
 		if (!$this->Movement->exists($id)) {
 			throw new NotFoundException(__('Invalid movement'));
 		}
 		if ($this->request->is(array('post', 'put'))) {
 			if ($this->Movement->save($this->request->data)) {
 				$this->Session->setFlash(__('The movement has been saved.'));
-				return $this->redirect(array('action' => 'index'));
+				return $this->redirect(array('admin' => true, 'action' => 'edit', $id));
 			} else {
 				$this->Session->setFlash(__('The movement could not be saved. Please, try again.'));
 			}
@@ -87,13 +87,13 @@ class MovementsController extends AppController {
 	}
 
 /**
- * delete method
+ * admin_delete method
  *
  * @throws NotFoundException
  * @param string $id
  * @return void
  */
-	public function delete($id = null) {
+	public function admin_delete($id = null) {
 		$this->Movement->id = $id;
 		if (!$this->Movement->exists()) {
 			throw new NotFoundException(__('Invalid movement'));

@@ -12,6 +12,7 @@ app/[Cc]onfig/database.php
 /dist
 /tags
 /app/webroot/media
+/tests/cukes/results
 
 .DS_Store
 .DS_Store?

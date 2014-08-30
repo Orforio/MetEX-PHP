@@ -49,6 +49,31 @@
 	</ul>
 </div>
 <div class="related">
+	<h3><?php echo __('Related Images'); ?></h3>
+	<?php if (!empty($station['Image'])): ?>
+	<table cellpadding = "0" cellspacing = "0">
+	<tr>
+		<th><?php echo __('Id'); ?></th>
+		<th><?php echo __('Station Id'); ?></th>
+		<th><?php echo __('Place Id'); ?></th>
+		<th><?php echo __('Filename'); ?></th>
+		<th><?php echo __('Title'); ?></th>
+		<th><?php echo __('Image'); ?></th>
+	</tr>
+	<?php foreach ($station['Image'] as $image): ?>
+		<tr>
+			<td><?php echo $image['id']; ?></td>
+			<td><?php echo $image['station_id']; ?></td>
+			<td><?php echo $image['place_id']; ?></td>
+			<td><?php echo $image['filename']; ?></td>
+			<td><?php echo $image['title']; ?></td>
+			<td><img src="/media/images/<?php echo $image['filename']; ?>" height="187" width="250" /></td>
+		</tr>
+	<?php endforeach; ?>
+	</table>
+<?php endif; ?>
+</div>
+<div class="related">
 	<h3><?php echo __('Related Movements'); ?></h3>
 	<?php if (!empty($station['Movement'])): ?>
 	<table cellpadding = "0" cellspacing = "0">

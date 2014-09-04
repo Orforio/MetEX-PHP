@@ -14,6 +14,8 @@ app/[Cc]onfig/database.php
 /app/webroot/media
 /tests/cukes/results
 
+.sass-cache
+
 .DS_Store
 .DS_Store?
 ._*

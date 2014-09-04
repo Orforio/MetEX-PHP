@@ -16,7 +16,7 @@
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
 
-$cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework');
+$cakeDescription = h("MétEX, the Paris Métro virtual tour");
 ?>
 <!DOCTYPE html>
 <html>
@@ -29,31 +29,44 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
 	<?php
 		echo $this->Html->meta('icon');
 
-		echo $this->Html->css('cake.generic');
+		echo $this->Html->css('styles');
+//		echo $this->Html->css('cake.generic');
+
+		echo $this->Html->script(array('jquery', 'bootstrap'));
 
 		echo $this->fetch('meta');
 		echo $this->fetch('css');
 		echo $this->fetch('script');
 	?>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
-	<div id="container">
-		<div id="header">
-			<h1><?php echo $this->Html->link($cakeDescription, 'http://cakephp.org'); ?></h1>
+	<nav class="navbar navbar-default" role="navigation">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#">mét<strong>ex</strong></a>
+			</div>
+			<div class="collapse navbar-collapse" id="navbar-collapse">
+				<ul class="nav navbar-nav">
+					<li class="active"><a href="#">tour</a></li>
+					<li><a href="#">journey</a></li>
+				</ul>
+			</div>
 		</div>
-		<div id="content">
-
-			<?php echo $this->Session->flash(); ?>
-
-			<?php echo $this->fetch('content'); ?>
-		</div>
-		<div id="footer">
-			<?php echo $this->Html->link(
-					$this->Html->image('cake.power.gif', array('alt' => $cakeDescription, 'border' => '0')),
-					'http://www.cakephp.org/',
-					array('target' => '_blank', 'escape' => false)
-				);
-			?>
+	</nav>
+	<?php echo $this->Session->flash(); ?>
+	<?php echo $this->fetch('content'); ?>
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-xs-12">
+				<p>&copy;2005-2014 Richard Whittaker</p>
+			</div>
 		</div>
 	</div>
 	<?php echo $this->element('sql_dump'); ?>

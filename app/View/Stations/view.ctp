@@ -1,3 +1,97 @@
+<div class="jumbotron">
+	<div class="container">
+		<h1>(<?php echo h($station['Line']['name']); ?>) <?php echo h($station['Station']['name']); ?></h1>
+	</div>
+</div>
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-sm-6">
+			<h2 class="text-left">&lt; 
+				<?php // TODO: Remove logic from View
+				foreach ($station['UpMovement'] as $upMovement):
+					if ($upMovement['up_allowed']) {
+						echo $this->Html->link($upMovement['UpStation']['name'], array('controller' => 'stations', 'action' => 'view', $upMovement['UpStation']['id']));
+					}
+					else {
+						echo __('Terminus');
+					}
+					endforeach; ?>
+			</p>
+		</div>
+		<div class="col-sm-6">
+			<h2 class="text-right">
+				<?php // TODO: Remove logic from View
+				foreach ($station['DownMovement'] as $downMovement):
+					if ($downMovement['down_allowed']) {
+						echo $this->Html->link($downMovement['DownStation']['name'], array('controller' => 'stations', 'action' => 'view', $downMovement['DownStation']['id']));
+					}
+					else {
+						echo __('Terminus');
+					}
+					endforeach; ?>
+				&gt;
+			</p>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-8">
+			<?php // TODO: Replace with a better carousel ?>
+			<?php if (!empty($station['Image'])): ?>
+			<div id="carousel-station" class="carousel slide" data-ride="carousel">
+				<!-- Indicators -->
+				<ol class="carousel-indicators">
+					<li data-target="#carousel-station" data-slide-to="0" class="active"></li>
+					<li data-target="#carousel-station" data-slide-to="1"></li>
+					<li data-target="#carousel-station" data-slide-to="2"></li>
+				</ol>
+				<!-- Wrapper for slides -->
+				<div class="carousel-inner">
+					<?php $slideNumber = 1; ?>
+					<?php foreach ($station['Image'] as $image): ?>
+					<div class="item<?php if ($slideNumber == 1) { echo ' active'; } ?>">
+						<img src="/media/images/<?php echo $image['filename']; ?>" alt="TODO">
+					</div>
+					<?php $slideNumber++; ?>
+					<?php endforeach; ?>
+				</div>
+				<!-- Controls -->
+				<a class="left carousel-control" href="#carousel-station" role="button" data-slide="prev">
+					<span class="glyphicon glyphicon-chevron-left"></span>
+				</a>
+				<a class="right carousel-control" href="#carousel-station" role="button" data-slide="next">
+					<span class="glyphicon glyphicon-chevron-right"></span>
+				</a>
+			</div>
+			<?php endif; ?>
+		</div>
+		<div class="col-md-4">
+			<p><?php echo h($station['Station']['description']); ?></p>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-sm-6">
+			<h3>Connections</h3>
+			<ul>
+			<?php // TODO: Remove logic from View ?>
+			<?php if (!empty($station['Interchange']['Station'])): ?>
+				<?php foreach ($station['Interchange']['Station'] as $interchange): ?>
+					<?php if ($interchange['line_id'] != $station['Line']['id']): ?>
+				<li><?php echo $this->Html->link($interchange['line_id'] . ": " . $interchange['name'], array('controller' => 'stations', 'action' => 'view', $interchange['id'])); ?></li>
+					<?php endif; ?>
+				<?php endforeach; ?>
+			<?php endif; ?>
+			</ul>
+		</div>
+		<div class="col-sm-6">
+			<h3>Places</h3>
+			<p>Not yet implemented</p>
+		</div>
+	</div>
+</div>
+
+
+
+<!--
 <div class="stations view">
 <h2><?php echo __('Station'); ?></h2>
 	<dl>
@@ -24,6 +118,15 @@
 		<dt><?php echo __('Interchange'); ?></dt>
 		<dd>
 			<?php echo $this->Html->link($station['Interchange']['name'], array('controller' => 'interchanges', 'action' => 'view', $station['Interchange']['id'])); ?>
+			<?php if (!empty($station['Interchange']['Station'])) {
+				echo h(' (Line ID(s) ');
+					foreach ($station['Interchange']['Station'] as $interchange): 
+						if ($interchange['line_id'] != $station['Line']['id']) {
+							echo $this->Html->link($interchange['line_id'] . ', ', array('controller' => 'stations', 'action' => 'view', $interchange['id']));
+						}
+					endforeach;
+				echo h(')');
+				} ?>
 			&nbsp;
 		</dd>
 		<dt><?php echo __('Active'); ?></dt>
@@ -31,22 +134,28 @@
 			<?php echo h($station['Station']['active']); ?>
 			&nbsp;
 		</dd>
+		<dt><?php echo __('Up Station(s)'); ?></dt>
+		<dd><?php foreach ($station['UpMovement'] as $upMovement):
+			if ($upMovement['up_allowed']) {
+				echo $this->Html->link($upMovement['UpStation']['name'], array('controller' => 'stations', 'action' => 'view', $upMovement['UpStation']['id']));
+			}
+			else {
+				echo __('Terminus');
+			}
+			endforeach; ?>
+			&nbsp;
+		</dd>
+		<dt><?php echo __('Down Station(s)'); ?></dt>
+		<dd><?php foreach ($station['DownMovement'] as $downMovement):
+			if ($downMovement['down_allowed']) {
+				echo $this->Html->link($downMovement['DownStation']['name'], array('controller' => 'stations', 'action' => 'view', $downMovement['DownStation']['id']));
+			}
+			else {
+				echo __('Terminus');
+			}
+			endforeach; ?>
+			&nbsp;</dd>
 	</dl>
-</div>
-<div class="actions">
-	<h3><?php echo __('Actions'); ?></h3>
-	<ul>
-		<li><?php echo $this->Html->link(__('Edit Station'), array('action' => 'edit', $station['Station']['id'])); ?> </li>
-		<li><?php echo $this->Form->postLink(__('Delete Station'), array('action' => 'delete', $station['Station']['id']), null, __('Are you sure you want to delete # %s?', $station['Station']['id'])); ?> </li>
-		<li><?php echo $this->Html->link(__('List Stations'), array('action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Station'), array('action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Lines'), array('controller' => 'lines', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Line'), array('controller' => 'lines', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Interchanges'), array('controller' => 'interchanges', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Interchange'), array('controller' => 'interchanges', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Movements'), array('controller' => 'movements', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Movement'), array('controller' => 'movements', 'action' => 'add')); ?> </li>
-	</ul>
 </div>
 <div class="related">
 	<h3><?php echo __('Related Images'); ?></h3>
@@ -110,3 +219,5 @@
 		</ul>
 	</div>
 </div>
+-->
+<?php debug($station); ?>

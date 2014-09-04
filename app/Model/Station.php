@@ -16,7 +16,9 @@ class Station extends AppModel {
  */
 	public $displayField = 'name';
 	
-//	public $recursive = 2;
+	public $recursive = 2;
+	
+	public $cacheQueries = true;
 
 /**
  * Validation rules
@@ -114,7 +116,7 @@ class Station extends AppModel {
 	public $hasMany = array(
 		'UpMovement' => array(
 			'className' => 'Movement',
-			'foreignKey' => 'up_station_id',
+			'foreignKey' => 'down_station_id',
 			'dependent' => false,
 			'conditions' => '',
 			'fields' => '',
@@ -127,7 +129,7 @@ class Station extends AppModel {
 		),
 		'DownMovement' => array(
 			'className' => 'Movement',
-			'foreignKey' => 'down_station_id',
+			'foreignKey' => 'up_station_id',
 			'dependent' => false,
 			'conditions' => '',
 			'fields' => '',

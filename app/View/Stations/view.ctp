@@ -6,7 +6,7 @@
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-sm-6">
-			<h2 class="text-left">&lt; 
+			<h2 class="text-left" id="nav-station-up">&lt; 
 				<?php // TODO: Remove logic from View
 				foreach ($station['UpMovement'] as $upMovement):
 					if ($upMovement['up_allowed']) {
@@ -19,7 +19,7 @@
 			</p>
 		</div>
 		<div class="col-sm-6">
-			<h2 class="text-right">
+			<h2 class="text-right" id="nav-station-down">
 				<?php // TODO: Remove logic from View
 				foreach ($station['DownMovement'] as $downMovement):
 					if ($downMovement['down_allowed']) {
@@ -69,7 +69,7 @@
 		</div>
 	</div>
 	<div class="row">
-		<div class="col-sm-6">
+		<div class="col-sm-6" id="nav-station-connections">
 			<h3>Connections</h3>
 			<ul>
 			<?php // TODO: Remove logic from View ?>
@@ -82,7 +82,7 @@
 			<?php endif; ?>
 			</ul>
 		</div>
-		<div class="col-sm-6">
+		<div class="col-sm-6" id="nav-station-places">
 			<h3>Places</h3>
 			<p>Not yet implemented</p>
 		</div>

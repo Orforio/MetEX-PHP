@@ -37,6 +37,10 @@ Then(/^I see "(.*?)"$/) do |text|
   page.should have_text(text)
 end
 
+Then(/^I see the "(.*?)" element "(.*?)"$/) do |element, text|
+  find(element).should have_text(text)
+end
+
 Then(/^I see the following table:$/) do |table|
   hashes = table.hashes
   hashes.each do |hash|
@@ -46,4 +50,8 @@ Then(/^I see the following table:$/) do |table|
       end
     end
   end
+end
+
+Then(/^the URL should be "(.*?)"$/) do |url|
+  current_path.should == url
 end

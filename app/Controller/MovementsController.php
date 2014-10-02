@@ -21,7 +21,7 @@ class MovementsController extends AppController {
  *
  * @return void
  */
-	public function index() {
+	public function admin_index() {
 		$this->Movement->recursive = 0;
 		$this->set('movements', $this->Paginator->paginate());
 	}

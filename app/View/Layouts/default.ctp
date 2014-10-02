@@ -30,7 +30,6 @@ $cakeDescription = h("MétEX, the Paris Métro virtual tour");
 		echo $this->Html->meta('icon');
 
 		echo $this->Html->css('styles');
-//		echo $this->Html->css('cake.generic');
 
 		echo $this->Html->script(array('jquery', 'bootstrap'));
 

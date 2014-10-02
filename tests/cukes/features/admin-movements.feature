@@ -13,9 +13,9 @@ Feature: Admin - Movements
   Scenario: Viewing Movement
     Given I am logged in as "Admin"
     When I visit "/admin/movements/view/3"
-    Then I see the following table:
-      | Id | Up Station Id | Down Station Id | Up Allowed | Down Allowed | Length |
-      | 3  | Madeleine     | Pyramides       | 1          | 1            |        |
+    Then I see the "movement-view-row" table:
+      | ID | Up Station ID | Down Station ID | Up Allowed? | Down Allowed? | Length |
+      | 3  | Madeleine     | Pyramides       | 1           | 1             |        |
  
   Scenario: Adding Movement
     Given I am logged in as "Admin"

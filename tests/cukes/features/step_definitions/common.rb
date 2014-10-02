@@ -18,7 +18,7 @@ end
 
 When(/^I visit "(.*?)"$/) do |url|
   visit(url)
-  page.title.should_not include 'Errors'
+  page.title.should_not include "Errors"
 end
 
 When(/^I try to visit "(.*?)"$/) do |url|
@@ -41,15 +41,10 @@ Then(/^I see the "(.*?)" element "(.*?)"$/) do |element, text|
   find(element).should have_text(text)
 end
 
-Then(/^I see the following table:$/) do |table|
-  hashes = table.hashes
-  hashes.each do |hash|
-    hash.each do |item|
-      item.each do |text|  # TODO: This is bad and I should feel bad. Make it actually compare tables once Views are standardised.
-        page.should have_text(text)
-      end
-    end
-  end
+Then(/^I see the "(.*?)" table:$/) do |table_name, table_expected|
+  rows = find("##{table_name}").all("tr")
+  table_actual = rows.map { |r| r.all("th,td").map { |c| c.text } }
+  table_expected.diff! table_actual
 end
 
 Then(/^the URL should be "(.*?)"$/) do |url|

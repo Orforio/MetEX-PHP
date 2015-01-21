@@ -50,3 +50,7 @@ end
 Then(/^the URL should be "(.*?)"$/) do |url|
   current_path.should == url
 end
+
+Then(/^I cannot click on "(.*?)"$/) do |text|
+  expect {click_link(text)}.to raise_error(Capybara::ElementNotFound)
+end

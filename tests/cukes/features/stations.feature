@@ -12,16 +12,6 @@ Feature: Stations
     Then I see the "h1" element "Gambetta"
     And I see the "h1" element "3bis"
     
-  Scenario: Viewing navigation
-    When I visit "/stations/view/12"
-    Then I see the "#nav-station-up" element "Pelleport"
-    And I see the "#nav-station-down" element "Terminus"
-    
-  Scenario: Using navigation
-    When I visit "/stations/view/12"
-    And I press the "Pelleport" link
-    Then the URL should be "/stations/view/11"
-    
   Scenario: Viewing content
     When I visit "/stations/view/12"
     Then I see a 3-photo carousel

@@ -6,31 +6,10 @@
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-sm-6">
-			<h2 class="text-left" id="nav-station-up">&lt; 
-				<?php // TODO: Remove logic from View
-				foreach ($station['UpMovement'] as $upMovement):
-					if ($upMovement['up_allowed']) {
-						echo $this->Html->link($upMovement['UpStation']['name'], array('controller' => 'stations', 'action' => 'view', $upMovement['UpStation']['id']));
-					}
-					else {
-						echo __('Terminus');
-					}
-					endforeach; ?>
-			</p>
+			<?php $this->Navigation->addSequentialNavLink($station['UpMovement'], 'up'); ?>
 		</div>
 		<div class="col-sm-6">
-			<h2 class="text-right" id="nav-station-down">
-				<?php // TODO: Remove logic from View
-				foreach ($station['DownMovement'] as $downMovement):
-					if ($downMovement['down_allowed']) {
-						echo $this->Html->link($downMovement['DownStation']['name'], array('controller' => 'stations', 'action' => 'view', $downMovement['DownStation']['id']));
-					}
-					else {
-						echo __('Terminus');
-					}
-					endforeach; ?>
-				&gt;
-			</p>
+			<?php $this->Navigation->addSequentialNavLink($station['DownMovement'], 'down'); ?>
 		</div>
 	</div>
 	<div class="row">

@@ -38,9 +38,22 @@ Feature: Stations - Previous/Next station navigation
     And I see the "#nav-station-down-1" element "Charles Michel"
     When I press the "Mirabeau" link
     Then the URL should be "/stations/view/78"
-  
-  Scenario: Line terminating in a loop
-    pending
+    
+  Scenario: Line terminating in a loop - Penultimate station
+    When I visit "/stations/view/18"
+    Then I see the "#nav-station-up-1" element "Botzaris"
+    And I see the "#nav-station-down-1" element "Pré Saint-Gervais"
+    When I press the "Pré Saint-Gervais" link
+    Then the URL should be "/stations/view/19"
+    
+  Scenario: Line terminating in a loop - Terminus station
+    When I visit "/stations/view/19"
+    Then I see the "#nav-station-up-1" element "Danube"
+    And I see the "#nav-station-up-2" element "Place des Fêtes"
+    And I see the "#nav-station-down-1" element "Terminus"
+    And I cannot click on "Terminus"
+    When I press the "Danube" link
+    Then the URL should be "/stations/view/20"
   
   Scenario: Line with one or more branches
     pending

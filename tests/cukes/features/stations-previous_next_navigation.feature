@@ -55,5 +55,25 @@ Feature: Stations - Previous/Next station navigation
     When I press the "Danube" link
     Then the URL should be "/stations/view/20"
   
-  Scenario: Line with one or more branches
-    pending
+  Scenario: Line with one or more branches - Terminus station
+    When I visit "/stations/view/991"
+    Then I see the "#nav-station-up-1" element "Terminus"
+    And I see the "#nav-station-down-1" element "Guy Môquet"
+    And I cannot click on "Terminus"
+    When I press the "Guy Môquet" link
+    Then the URL should be "/stations/view/992"
+    
+  Scenario: Line with one or more branches - Fork station
+    When I visit "/stations/view/995"
+    Then I see the "#nav-station-up-1" element "Guy Môquet"
+    And I see the "#nav-station-up-2" element "Brochant"
+    And I see the "#nav-station-down-1" element "Place de Clichy"
+    When I press the "Brochant" link
+    Then the URL should be "/stations/view/994"
+    
+  Scenario: Line with one or more branches - Post-fork station
+    When I visit "/stations/view/994"
+    Then I see the "#nav-station-up-1" element "Asnières Gennevilliers"
+    And I see the "#nav-station-down-1" element "La Fourche"
+    When I press the "La Fourche" link
+    Then the URL should be "/stations/view/995"

@@ -6,10 +6,10 @@
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-sm-6">
-			<?php $this->Navigation->addSequentialNavLink($station['UpMovement'], 'up'); ?>
+			<?php echo $this->Navigation->addSequentialNavLink($station['UpMovement'], 'up'); ?>
 		</div>
 		<div class="col-sm-6">
-			<?php $this->Navigation->addSequentialNavLink($station['DownMovement'], 'down'); ?>
+			<?php echo $this->Navigation->addSequentialNavLink($station['DownMovement'], 'down'); ?>
 		</div>
 	</div>
 	<div class="row">

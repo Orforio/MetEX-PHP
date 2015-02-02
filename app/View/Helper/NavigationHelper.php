@@ -8,6 +8,8 @@ class NavigationHelper extends AppHelper {
 		$linkPrefix = '';
 		$linkSuffix = '';
 		
+		$linkOutput = '';
+		
 		switch($direction) {
 			case 'up':
 				$stationKey = 'UpStation';
@@ -25,24 +27,28 @@ class NavigationHelper extends AppHelper {
 		
 		$stationCount = 1;
 		
-		foreach ($movements as $movement) {
-			echo '<h2 class="text-' . $textAlign . '" id="nav-station-' . $direction .'-' . $stationCount . '">' . $linkPrefix;
-			
-			if ($movement[$direction . '_allowed']) {
-				echo $this->Html->link($movement[$stationKey]['name'], array('controller' => 'stations', 'action' => 'view', $movement[$stationKey]['id']));
-			}
-			else {
-				if ($movement[$direction . '_station_id'] != null) {	// Illegal movement: in reality, train does not go in this direction.
-					echo $this->Html->link($movement[$stationKey]['name'], array('controller' => 'stations', 'action' => 'view', $movement[$stationKey]['id']), array('class' => 'bg-danger'));	// TODO: bg-danger class for "illegal" movements is temporary. Replace this with proper CSS styling later.
+		if (isset($movements[0])) {
+			foreach ($movements as $movement) {
+				$linkOutput .= '<h2 class="text-' . $textAlign . '" id="nav-station-' . $direction .'-' . $stationCount . '">' . $linkPrefix;
+				
+				if ($movement[$direction . '_allowed']) {
+					$linkOutput .= $this->Html->link($movement[$stationKey]['name'], array('controller' => 'stations', 'action' => 'view', $movement[$stationKey]['id']));
 				}
-				else {	// Terminus station: there is no station beyond this one.
-					echo 'Terminus';	
+				else {
+					if ($movement[$direction . '_station_id'] != null) {	// Illegal movement: in reality, train does not go in this direction.
+						$linkOutput .= $this->Html->link($movement[$stationKey]['name'], array('controller' => 'stations', 'action' => 'view', $movement[$stationKey]['id']), array('class' => 'bg-danger'));	// TODO: bg-danger class for "illegal" movements is temporary. Replace this with proper CSS styling later.
+					}
+					else {	// Terminus station: there is no station beyond this one.
+						$linkOutput .= 'Terminus';	
+					}
 				}
+				
+				$linkOutput .= $linkSuffix . '</h2>';
+				
+				$stationCount++;
 			}
-			
-			echo $linkSuffix . '</h2>';
-			
-			$stationCount++;
 		}
+		
+		return $linkOutput;
     }
 }

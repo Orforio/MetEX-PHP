@@ -14,7 +14,7 @@
 	</div>
 	<div class="row">
 		<div class="col-md-8">
-			<?php // TODO: Replace with a better carousel ?>
+			<?php /* REMOVING PENDING REFACTOR ?>
 			<?php if (!empty($station['Image'])): ?>
 			<div id="carousel-station" class="carousel slide" data-ride="carousel">
 				<!-- Indicators -->
@@ -41,7 +41,7 @@
 					<span class="glyphicon glyphicon-chevron-right"></span>
 				</a>
 			</div>
-			<?php endif; ?>
+			<?php endif; */?>
 		</div>
 		<div class="col-md-4">
 			<p><?php echo h($station['Station']['description']); ?></p>

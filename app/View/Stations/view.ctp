@@ -13,7 +13,8 @@
 		</div>
 	</div>
 	<div class="row">
-		<div class="col-md-8">
+		<div class="col-md-8" id="content-station-photos">
+			<?php echo $this->Image->addStationSlideshow($station['Image']); ?>
 			<?php /* REMOVING PENDING REFACTOR ?>
 			<?php if (!empty($station['Image'])): ?>
 			<div id="carousel-station" class="carousel slide" data-ride="carousel">

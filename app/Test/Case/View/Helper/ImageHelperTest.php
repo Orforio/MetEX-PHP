@@ -5,10 +5,10 @@ App::uses('ImageHelper', 'View/Helper');
 App::uses('Station', 'Model');
 
 /**
- * StationHelper Test Case
+ * ImageHelper Test Case
  *
  */
-class StationHelperTest extends CakeTestCase {
+class ImageHelperTest extends CakeTestCase {
 	
 /**
  * Fixtures
@@ -42,6 +42,16 @@ class StationHelperTest extends CakeTestCase {
 		unset($this->Station);
 
 		parent::tearDown();
+	}
+	
+/**
+ * testAddSequentialNavLink method
+ *
+ * @return void
+ */
+ 	public function testAddStationSlideshow() {
+		// No image data provided
+		$this->assertXmlStringEqualsXmlString('<img src="/media/images/photo-not-available.jpg" alt="Photo not available" class="img-responsive" />', $this->Image->addStationSlideshow(null));
 	}
 	
 }

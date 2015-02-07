@@ -1,5 +1,5 @@
 #encoding: utf-8
-@active
+
 Feature: Stations - Previous/Next station navigation
   As a passenger,
   I want to be able to view the next and previous stations to the one I'm on

@@ -21,7 +21,7 @@ class StationsController extends AppController {
  *
  * @var array
  */
-	public $helpers = array('Navigation', 'Html');
+	public $helpers = array('Navigation', 'Image', 'Html');
 
 /**
  * index method

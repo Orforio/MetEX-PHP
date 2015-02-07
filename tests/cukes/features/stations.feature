@@ -14,8 +14,7 @@ Feature: Stations
     
   Scenario: Viewing content
     When I visit "/stations/view/12"
-    Then I see a 3-photo carousel
-    And I see "the running tunnels for the old Line 3"
+    Then I see "the running tunnels for the old Line 3"
     
   Scenario: Viewing connections
     When I visit "/stations/view/12"

@@ -114,3 +114,4 @@ CakeLog::config('error', array(
  * MétEX constants
  */
 Configure::write('MetEX.imagepath', '/media/images/');
+Configure::write('MetEX.stationphotopath', 'stations/');

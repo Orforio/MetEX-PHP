@@ -19,18 +19,26 @@ Feature: Stations - Image slideshow
     
   Scenario: Images scroll automatically
     When I visit "/stations/view/12"
-    Then the following photos appear sequentially:
+    Then the following photos are visible:
       | /media/images/stations/4/12-1.jpg |
       | /media/images/stations/4/12-2.jpg |
       | /media/images/stations/4/12-3.jpg |
     
- # Scenario: Images can be selected manually
- #   pending
+  Scenario: Images can be selected manually
+    When I visit "/stations/view/10"
+    Then the following photos are visible:
+      | /media/images/stations/4/10-1.jpg |
+    And when I press the "right"-arrow
+    Then the following photos are visible:
+      | /media/images/stations/4/10-2.jpg |
+    And when I press the "left"-arrow
+    Then the following photos are visible:
+      | /media/images/stations/4/10-1.jpg |
     
  # Scenario: Slideshow can be halted and restarted
  #   pending
     
   Scenario: Image is missing
     When I visit "/stations/view/991"
-    Then the following photos are on the page:
+    Then the following photos are visible:
       | /media/images/photo-not-available.jpg |

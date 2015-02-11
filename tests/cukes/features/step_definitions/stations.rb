@@ -12,9 +12,13 @@ Then(/^the following photos are on the page:$/) do |table|
   expected_photos.should == actual_photos
 end
 
-Then(/^the following photos appear sequentially:$/) do |table|
+Then(/^the following photos are visible:$/) do |table|
   expected_photos = table.raw.flatten
   
   Capybara.default_wait_time = 5
   expected_photos.each { |expected_photo| page.find(:xpath, "//img[@src='#{expected_photo}']", :visible => true) }
+end
+
+Then(/^when I press the "(.*?)"\-arrow$/) do |direction|
+  find("a.carousel-control.#{direction}").click
 end

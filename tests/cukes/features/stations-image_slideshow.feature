@@ -17,10 +17,14 @@ Feature: Stations - Image slideshow
       | /media/images/stations/4/11-2.jpg |
       | /media/images/stations/4/11-3.jpg |
     
- # Scenario: Images scroll automatically
- #   pending
+  Scenario: Images scroll automatically
+    When I visit "/stations/view/12"
+    Then the following photos appear sequentially:
+      | /media/images/stations/4/12-1.jpg |
+      | /media/images/stations/4/12-2.jpg |
+      | /media/images/stations/4/12-3.jpg |
     
- # Scenario: Images can be selected
+ # Scenario: Images can be selected manually
  #   pending
     
  # Scenario: Slideshow can be halted and restarted

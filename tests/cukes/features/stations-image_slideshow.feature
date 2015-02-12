@@ -35,8 +35,13 @@ Feature: Stations - Image slideshow
     Then the following photos are visible:
       | /media/images/stations/4/10-1.jpg |
     
- # Scenario: Slideshow can be halted and restarted
- #   pending
+  Scenario: Slideshow can be halted
+    When I visit "/stations/view/9"
+    Then the following photos are visible:
+      | /media/images/stations/4/9-1.jpg |
+    And when I hover over the slideshow
+    Then the following photos are not visible:
+      | /media/images/stations/4/9-2.jpg |
     
   Scenario: Image is missing
     When I visit "/stations/view/991"

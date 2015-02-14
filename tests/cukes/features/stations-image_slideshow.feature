@@ -1,5 +1,4 @@
 #encoding: utf-8
-@active
 
 Feature: Stations - Image slideshow
   As a passenger,

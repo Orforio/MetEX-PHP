@@ -31,52 +31,40 @@ class Image extends AppModel {
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 		),
-		'place_id' => array(
-			'naturalNumber' => array(
-				'rule' => array('naturalNumber'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
-			),
-		),
+	//	'place_id' => array(
+	//		'naturalNumber' => array(
+	//			'rule' => array('naturalNumber'),
+	//			'message' => 'Invalid PlaceID',
+	//			'allowEmpty' => true,
+	//			'required' => true
+	//		),
+	//	),
 		'filename' => array(
 			'notEmpty' => array(
 				'rule' => array('notEmpty'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+				'message' => 'You must specify a filename',
+				'allowEmpty' => false,
+				'required' => true
 			),
 		),
 		'title' => array(
 			'notEmpty' => array(
 				'rule' => array('notEmpty'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+				'message' => 'You must specify a title',
+				'allowEmpty' => false,
+				'required' => true
 			),
 			'maxLength' => array(
-				'rule' => array('maxLength'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+				'rule' => array('maxLength', 255),
+				'message' => 'Title must be under 255 characters'
 			),
 		),
 		'alt' => array(
 			'maxLength' => array(
-				'rule' => array('maxLength'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+				'rule' => array('maxLength', 255),
+				'message' => 'Alt text must be under 255 characters',
+				'allowEmpty' => true,
+				'required' => true
 			),
 		),
 	);

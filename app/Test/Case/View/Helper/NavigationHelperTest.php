@@ -16,7 +16,7 @@ class NavigationHelperTest extends CakeTestCase {
  * @var array
  */
 	public $fixtures = array(
-		'line', 'station', 'interchange', 'movement', 'image', 'station_movement', 'stock'
+		'line', 'station', 'interchange', 'movement', 'image', 'station_movement', 'stock', 'place'
 	);
 
 /**
@@ -57,16 +57,44 @@ class NavigationHelperTest extends CakeTestCase {
 		$stationBotzarisDataStrippedUp = $stationBotzarisData['UpMovement'];
 		$stationBotzarisDataStrippedDown = $stationBotzarisData['DownMovement'];
 		
-		
 		// Good data
-		$this->assertEquals('<h2 class="text-left" id="nav-station-up-1">&lt; <a href="/stations/view/16">Buttes Chaumont</a></h2>', $this->Navigation->addSequentialNavLink($stationBotzarisDataStrippedUp, 'up'));
-		$this->assertEquals('<h2 class="text-right" id="nav-station-down-1"><a href="/stations/view/18">Place des Fêtes</a> &gt;</h2><h2 class="text-right" id="nav-station-down-2"><a href="/stations/view/20" class="bg-danger">Danube</a> &gt;</h2>', $this->Navigation->addSequentialNavLink($stationBotzarisDataStrippedDown, 'down'));
+		$this->assertXmlStringEqualsXmlString('<h2 class="text-left" id="nav-station-up-1">&lt; <a href="/stations/view/16">Buttes Chaumont</a></h2>', $this->Navigation->addSequentialNavLink($stationBotzarisDataStrippedUp, 'up'));
+		$this->assertEquals('<h2 class="text-right" id="nav-station-down-1"><a href="/stations/view/18">Place des Fêtes</a> &gt;</h2><h2 class="text-right" id="nav-station-down-2"><a href="/stations/view/20" class="bg-danger">Danube</a> &gt;</h2>', $this->Navigation->addSequentialNavLink($stationBotzarisDataStrippedDown, 'down'));	// Can't use XmlEtc because this isn't contained in a single element yet
 		
 		// Bad data
 		$this->assertEquals('', $this->Navigation->addSequentialNavLink(null, 'up'));
 		
 		$this->setExpectedException('InternalErrorException', 'Missing or wrong direction specified');
 		$this->Navigation->addSequentialNavLink($stationBotzarisDataStrippedUp, 'diagonally');
+	}
+	
+/**
+ * testAddConnectionsList method
+ *
+ * @return void
+ */
+	public function testAddConnectionsList() {
+		$stationCourSEData = $this->Station->find('first', array(
+			'conditions' => array('Station.id' => 7),
+			'recursive' => 2));
+		$stationBercyData = $this->Station->find('first', array(
+			'conditions' => array('Station.id' => 6),
+			'recursive' => 2));
+		$stationSaintLazareData = $this->Station->find('first', array(
+			'conditions' => array('Station.id' => 1),
+			'recursive' => 2));
+			
+		$stationCourSEDataStripped = $stationCourSEData['Interchange'];
+		$stationBercyDataStripped = $stationBercyData['Interchange'];
+		$stationSaintLazareDataStripped = $stationSaintLazareData['Interchange'];
+		
+		// Good data
+		$this->assertXmlStringEqualsXmlString('<p>No connections</p>', $this->Navigation->addConnectionsList($stationCourSEDataStripped));
+		$this->assertXmlStringEqualsXmlString('<ul><li><a href="/stations/view/68">(6) Bercy</a></li></ul>', $this->Navigation->addConnectionsList($stationBercyDataStripped));
+		$this->assertXmlStringEqualsXmlString('<ul><li><a href="/stations/view/30">(3) Saint-Lazare</a></li><li><a href="/stations/view/107">(12) Saint-Lazare</a></li></ul>', $this->Navigation->addConnectionsList($stationSaintLazareDataStripped));
+		
+		// Bad data
+		$this->assertEquals('', $this->Navigation->addConnectionsList(null));
 	}
 
 }

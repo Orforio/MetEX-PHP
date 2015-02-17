@@ -40,7 +40,7 @@ end
 
 Then(/^I see the following connections:$/) do |table|
   found_connections = find('#nav-station-connections').all('li')
-  actual_connections = found_connections.map { |connection| [connection.text[/(\w+):/, 1], connection.text[/\w+: (.+)/, 1]] }
+  actual_connections = found_connections.map { |connection| [connection.text[/\((\w+)\)/, 1], connection.text[/\(\w+\) (.+)/, 1]] }
   
   table.diff! actual_connections
 end

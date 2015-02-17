@@ -12,6 +12,7 @@ Feature: Stations - Connections
   Scenario: Station does not belong to an interchange and connects to no lines
     When I visit "/stations/view/7"
     Then there are 0 connections
+    And I see "No connections"
     
   Scenario: Station belongs to an interchange and connects to one line
     When I visit "/stations/view/6"

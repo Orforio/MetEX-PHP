@@ -15,34 +15,6 @@
 	<div class="row">
 		<div class="col-md-8" id="content-station-photos">
 			<?php echo $this->Image->addStationSlideshow($station['Image']); ?>
-			<?php /* REMOVING PENDING REFACTOR ?>
-			<?php if (!empty($station['Image'])): ?>
-			<div id="carousel-station" class="carousel slide" data-ride="carousel">
-				<!-- Indicators -->
-				<ol class="carousel-indicators">
-					<li data-target="#carousel-station" data-slide-to="0" class="active"></li>
-					<li data-target="#carousel-station" data-slide-to="1"></li>
-					<li data-target="#carousel-station" data-slide-to="2"></li>
-				</ol>
-				<!-- Wrapper for slides -->
-				<div class="carousel-inner">
-					<?php $slideNumber = 1; ?>
-					<?php foreach ($station['Image'] as $image): ?>
-					<div class="item<?php if ($slideNumber == 1) { echo ' active'; } ?>">
-						<img src="/media/images/<?php echo $image['filename']; ?>" alt="TODO">
-					</div>
-					<?php $slideNumber++; ?>
-					<?php endforeach; ?>
-				</div>
-				<!-- Controls -->
-				<a class="left carousel-control" href="#carousel-station" role="button" data-slide="prev">
-					<span class="glyphicon glyphicon-chevron-left"></span>
-				</a>
-				<a class="right carousel-control" href="#carousel-station" role="button" data-slide="next">
-					<span class="glyphicon glyphicon-chevron-right"></span>
-				</a>
-			</div>
-			<?php endif; */?>
 		</div>
 		<div class="col-md-4">
 			<p><?php echo h($station['Station']['description']); ?></p>
@@ -50,20 +22,11 @@
 	</div>
 	<div class="row">
 		<div class="col-sm-6" id="nav-station-connections">
-			<h3>Connections</h3>
-			<ul>
-			<?php // TODO: Remove logic from View ?>
-			<?php if (!empty($station['Interchange']['Station'])): ?>
-				<?php foreach ($station['Interchange']['Station'] as $interchange): ?>
-					<?php if ($interchange['line_id'] != $station['Line']['id']): ?>
-				<li><?php echo $this->Html->link($interchange['line_id'] . ": " . $interchange['name'], array('controller' => 'stations', 'action' => 'view', $interchange['id'])); ?></li>
-					<?php endif; ?>
-				<?php endforeach; ?>
-			<?php endif; ?>
-			</ul>
+			<h2>Connections</h2>
+			<?php echo $this->Navigation->addConnectionsList($station['Interchange'], $station['Station']['id']); ?>
 		</div>
 		<div class="col-sm-6" id="nav-station-places">
-			<h3>Places</h3>
+			<h2>Places</h2>
 			<p>Not yet implemented</p>
 		</div>
 	</div>

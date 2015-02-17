@@ -1,4 +1,5 @@
 #encoding: utf-8
+
 Feature: Stations
   In order to browse the Stations
   As a visitor 
@@ -16,17 +17,12 @@ Feature: Stations
     When I visit "/stations/view/12"
     Then I see "the running tunnels for the old Line 3"
     
-  Scenario: Viewing connections
-    When I visit "/stations/view/12"
-    Then I see the "#nav-station-connections h3" element "Connections"
-    And I see the "#nav-station-connections ul li a" element "3: Gambetta"
-    
   Scenario: Using connections
     When I visit "/stations/view/12"
-    And I press the "3: Gambetta" link
+    And I press the "(3) Gambetta" link
     Then the URL should be "/stations/view/43"
     
   Scenario: Using places
     When I visit "/stations/view/12"
-    Then I see the "#nav-station-places h3" element "Places"
+    Then I see the "#nav-station-places h2" element "Places"
     And I see "Not yet implemented"

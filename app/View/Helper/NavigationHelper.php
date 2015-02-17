@@ -51,4 +51,22 @@ class NavigationHelper extends AppHelper {
 		
 		return $linkOutput;
     }
+    
+    public function addConnectionsList($interchanges = null, $currentStationID = null) {
+	    $listOutput = '';
+	    $list = array();
+	    
+	    if (isset($interchanges['Station'][0]) && isset($currentStationID) && is_numeric($currentStationID)) {
+		    foreach ($interchanges['Station'] as $station) {
+			    if ($station['id'] != $currentStationID) {	// We don't want to list the current station in the Connections list
+				    $list[] = $this->Html->link('(' . $station['Line']['name'] . ') ' . $station['name'], array('controller' => 'stations', 'action' => 'view', $station['id']));
+			    }
+		    }
+		    $listOutput = $this->Html->nestedList($list, 'ul');
+	    } else {
+		    $listOutput = $this->Html->para(null, 'No connections');
+	    }
+	    
+	    return $listOutput;
+    }
 }

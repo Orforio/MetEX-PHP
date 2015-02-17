@@ -16,7 +16,7 @@ class Station extends AppModel {
  */
 	public $displayField = 'name';
 	
-	public $recursive = 2;
+	public $recursive = 3;	// TODO: Temporary fix for Interchange - investigate ContainbleBehavior to limit queries
 	
 	public $cacheQueries = true;
 

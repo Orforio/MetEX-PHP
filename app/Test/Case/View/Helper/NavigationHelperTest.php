@@ -76,25 +76,28 @@ class NavigationHelperTest extends CakeTestCase {
 	public function testAddConnectionsList() {
 		$stationCourSEData = $this->Station->find('first', array(
 			'conditions' => array('Station.id' => 7),
-			'recursive' => 2));
+			'recursive' => 3));
 		$stationBercyData = $this->Station->find('first', array(
 			'conditions' => array('Station.id' => 6),
-			'recursive' => 2));
+			'recursive' => 3));
 		$stationSaintLazareData = $this->Station->find('first', array(
 			'conditions' => array('Station.id' => 1),
-			'recursive' => 2));
+			'recursive' => 3));
 			
 		$stationCourSEDataStripped = $stationCourSEData['Interchange'];
 		$stationBercyDataStripped = $stationBercyData['Interchange'];
 		$stationSaintLazareDataStripped = $stationSaintLazareData['Interchange'];
 		
 		// Good data
-		$this->assertXmlStringEqualsXmlString('<p>No connections</p>', $this->Navigation->addConnectionsList($stationCourSEDataStripped));
-		$this->assertXmlStringEqualsXmlString('<ul><li><a href="/stations/view/68">(6) Bercy</a></li></ul>', $this->Navigation->addConnectionsList($stationBercyDataStripped));
-		$this->assertXmlStringEqualsXmlString('<ul><li><a href="/stations/view/30">(3) Saint-Lazare</a></li><li><a href="/stations/view/107">(12) Saint-Lazare</a></li></ul>', $this->Navigation->addConnectionsList($stationSaintLazareDataStripped));
+		$this->assertXmlStringEqualsXmlString('<p>No connections</p>', $this->Navigation->addConnectionsList($stationCourSEDataStripped, 7));
+		$this->assertXmlStringEqualsXmlString('<ul><li><a href="/stations/view/68">(6) Bercy</a></li></ul>', $this->Navigation->addConnectionsList($stationBercyDataStripped, 6));
+		$this->assertXmlStringEqualsXmlString('<ul><li><a href="/stations/view/30">(3) Saint-Lazare</a></li><li><a href="/stations/view/107">(12) Saint-Lazare</a></li></ul>', $this->Navigation->addConnectionsList($stationSaintLazareDataStripped, 1));
 		
 		// Bad data
-		$this->assertEquals('', $this->Navigation->addConnectionsList(null));
+		$this->assertXmlStringEqualsXmlString('<p>No connections</p>', $this->Navigation->addConnectionsList(null, 4));
+		$this->assertXmlStringEqualsXmlString('<p>No connections</p>', $this->Navigation->addConnectionsList($stationBercyDataStripped));
+		$this->assertXmlStringEqualsXmlString('<p>No connections</p>', $this->Navigation->addConnectionsList($stationBercyData, 6));
+		$this->assertXmlStringEqualsXmlString('<p>No connections</p>', $this->Navigation->addConnectionsList($stationBercyDataStripped, 'six'));
 	}
 
 }

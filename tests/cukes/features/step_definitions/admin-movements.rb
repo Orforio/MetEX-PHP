@@ -7,7 +7,7 @@ Given(/^a set of Movement data called "(.*?)"$/) do |movement_data|
   case movement_data
   when 'the sample'
     @movement_data = {
-      :up => 'Madeleine',
+      :up => 'Bibliothèque François Mitterrand',
       :down => 'Pelleport',
       :up_allowed => true,
       :down_allowed => true,

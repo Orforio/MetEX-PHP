@@ -33,3 +33,14 @@ end
 Then(/^when I hover over the slideshow$/) do
   page.find('#carousel-station').hover
 end
+
+Then(/^there (?:are|is) (\d+) connection[s]?$/) do |number|
+  find('#nav-station-connections').all('li', :count => number)
+end
+
+Then(/^I see the following connections:$/) do |table|
+  found_connections = find('#nav-station-connections').all('li')
+  actual_connections = found_connections.map { |connection| [connection.text[/(\w+):/, 1], connection.text[/\w+: (.+)/, 1]] }
+  
+  table.diff! actual_connections
+end

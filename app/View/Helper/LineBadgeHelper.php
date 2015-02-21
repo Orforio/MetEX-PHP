@@ -9,9 +9,7 @@ class LineBadgeHelper extends AppHelper {
 			if (preg_match('/^(\d+)bis$/', $lineName, $lineNumber)) {
 				$lineName = $lineNumber[1] . '<small>bis</small>';
 			}
-			return '<div class="line-badge">' . $lineName . '</div>';
-		} else {
-			return '';
+			return $this->Html->div('line-badge', $lineName);
 		}
 	}
 }

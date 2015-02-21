@@ -1,12 +1,6 @@
 <div class="jumbotron line-<?php echo h($station['Line']['id']); ?>">
 	<div class="container">
-		<h1><div class="line-badge"><?php
-			if ($station['Line']['name'] == "3bis" || $station['Line']['name'] == "7bis") {
-				echo "3<small>bis</small>";
-			} else {
-				echo h($station['Line']['name']);
-			}?>
-			</div> <?php echo h($station['Station']['name']); ?></h1>
+		<h1><?php echo $this->LineBadge->addLineBadge($station['Line']['name']); ?> <?php echo h($station['Station']['name']); ?></h1>
 	</div>
 </div>
 <div class="container-fluid">

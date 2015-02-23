@@ -1,5 +1,5 @@
 #encoding: utf-8
-
+@active
 Feature: Stations
   In order to browse the Stations
   As a visitor 
@@ -19,7 +19,7 @@ Feature: Stations
     
   Scenario: Using connections
     When I visit "/stations/view/12"
-    And I press the "(3) Gambetta" link
+    And I press the "Gambetta" link
     Then the URL should be "/stations/view/43"
     
   Scenario: Using places

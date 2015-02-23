@@ -2,7 +2,7 @@
 App::uses('AppHelper', 'View/Helper');
 
 class NavigationHelper extends AppHelper {
-	public $helpers = array('Html');
+	public $helpers = array('LineBadge', 'Html');
 	
 	public function addSequentialNavLink($movements, $direction) {
 		$linkPrefix = '';
@@ -54,15 +54,15 @@ class NavigationHelper extends AppHelper {
     
     public function addConnectionsList($interchanges = null, $currentStationID = null) {
 	    $listOutput = '';
-	    $list = array();
 	    
 	    if (isset($interchanges['Station'][0]) && isset($currentStationID) && is_numeric($currentStationID)) {
+		    $listOutput .= '<ul>';
 		    foreach ($interchanges['Station'] as $station) {
 			    if ($station['id'] != $currentStationID) {	// We don't want to list the current station in the Connections list
-				    $list[] = $this->Html->link('(' . $station['Line']['name'] . ') ' . $station['name'], array('controller' => 'stations', 'action' => 'view', $station['id']));
+					$listOutput .= '<li class="line-' . $station['Line']['id'] .'">' . $this->LineBadge->addLineBadge($station['Line']['name']) . ' ' . $this->Html->link($station['name'], array('controller' => 'stations', 'action' => 'view', $station['id'])) . '</li>';
 			    }
 		    }
-		    $listOutput = $this->Html->nestedList($list, 'ul');
+		    $listOutput .= '</ul>';
 	    } else {
 		    $listOutput = $this->Html->para(null, 'No connections');
 	    }

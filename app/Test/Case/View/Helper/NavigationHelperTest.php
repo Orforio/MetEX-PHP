@@ -90,8 +90,8 @@ class NavigationHelperTest extends CakeTestCase {
 		
 		// Good data
 		$this->assertXmlStringEqualsXmlString('<p>No connections</p>', $this->Navigation->addConnectionsList($stationCourSEDataStripped, 7));
-		$this->assertXmlStringEqualsXmlString('<ul><li><a href="/stations/view/68">(6) Bercy</a></li></ul>', $this->Navigation->addConnectionsList($stationBercyDataStripped, 6));
-		$this->assertXmlStringEqualsXmlString('<ul><li><a href="/stations/view/30">(3) Saint-Lazare</a></li><li><a href="/stations/view/107">(12) Saint-Lazare</a></li></ul>', $this->Navigation->addConnectionsList($stationSaintLazareDataStripped, 1));
+		$this->assertXmlStringEqualsXmlString('<ul><li class="line-7"><div class="line-badge">6</div> <a href="/stations/view/68">Bercy</a></li></ul>', $this->Navigation->addConnectionsList($stationBercyDataStripped, 6));
+		$this->assertXmlStringEqualsXmlString('<ul><li class="line-3"><div class="line-badge">3</div> <a href="/stations/view/30">Saint-Lazare</a></li><li class="line-14"><div class="line-badge">12</div> <a href="/stations/view/107">Saint-Lazare</a></li></ul>', $this->Navigation->addConnectionsList($stationSaintLazareDataStripped, 1));
 		
 		// Bad data
 		$this->assertXmlStringEqualsXmlString('<p>No connections</p>', $this->Navigation->addConnectionsList(null, 4));

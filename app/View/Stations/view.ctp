@@ -1,9 +1,10 @@
+<?php $this->assign('title', '('. $station['Line']['name'] . ') ' . $station['Station']['name']); ?>
 <div class="jumbotron line-<?php echo h($station['Line']['id']); ?>">
 	<div class="container">
 		<h1><?php echo $this->LineBadge->addLineBadge($station['Line']['name']); ?> <?php echo h($station['Station']['name']); ?></h1>
 	</div>
 </div>
-<div class="container-fluid">
+<div class="container-fluid line-<?php echo h($station['Line']['id']); ?>">
 	<div class="row">
 		<div class="col-sm-6">
 			<?php echo $this->Navigation->addSequentialNavLink($station['UpMovement'], 'up'); ?>

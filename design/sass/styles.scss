@@ -5,20 +5,45 @@
 @import "compass/css3/border-radius";
 @import "line-colours";
 
+.jumbotron {
+	margin-bottom: 0px;
+}
+
+.icon-badge {
+	@include border-radius(50%);
+	padding: 0.2em;
+	height: 2em;
+	width: 2em;
+	display: inline-block;
+	text-align: center;
+	background-color: $interchange-colour;
+	color: $text-colour-black;
+}
+
 @for $i from 1 through length($line-colours) {
-	.line-#{$i} {
+	.jumbotron.line-#{$i} {
 		background-color: nth($line-colours, $i);
 		color: contrast-color(nth($line-colours, $i), $text-colour-white, $text-colour-black);
 		
 		.line-badge {
-			@include border-radius(50%);
-			padding: 0.2em;
-			height: 2em;
-			width: 2em;
-			display: inline-block;
-			text-align: center;
+			@extend .icon-badge;
 			background-color: $text-colour-white;
 			color: nth($line-colours, $i);
 		}
+	}
+	
+	li.line-#{$i} {
+		.line-badge {
+			@extend .icon-badge;
+			background-color: nth($line-colours, $i);
+			color: contrast-color(nth($line-colours, $i), $text-colour-white, $text-colour-black);
+		}
+	}
+	
+	.container-fluid.line-#{$i} {
+		.carousel-indicators > li {
+			background-color: nth($line-colours, $i);
+		}
+		
 	}
 }

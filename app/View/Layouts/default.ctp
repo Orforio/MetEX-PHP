@@ -18,16 +18,17 @@
 
 $cakeDescription = h("MétEX, the Paris Métro virtual tour");
 ?>
-<!DOCTYPE html>
+<?php echo $this->Html->docType('html5'); ?>
 <html>
 <head>
 	<?php echo $this->Html->charset(); ?>
 	<title>
-		<?php echo $cakeDescription ?>:
-		<?php echo $title_for_layout; ?>
+		<?php echo $cakeDescription; ?>:
+		<?php echo $this->fetch('title'); ?>
 	</title>
 	<?php
 		echo $this->Html->meta('icon');
+		echo $this->Html->meta('viewport', 'width=device-width, initial-scale=1');
 
 		echo $this->Html->css('styles');
 
@@ -37,7 +38,6 @@ $cakeDescription = h("MétEX, the Paris Métro virtual tour");
 		echo $this->fetch('css');
 		echo $this->fetch('script');
 	?>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
 	<nav class="navbar navbar-default" role="navigation">
@@ -49,12 +49,12 @@ $cakeDescription = h("MétEX, the Paris Métro virtual tour");
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="#">mét<strong>ex</strong></a>
+				<?php echo $this->Html->link('mét<strong>ex</strong>', '/', array('class' => 'navbar-brand', 'escape' => false)); ?>
 			</div>
 			<div class="collapse navbar-collapse" id="navbar-collapse">
 				<ul class="nav navbar-nav">
-					<li class="active"><a href="#">tour</a></li>
-					<li><a href="#">journey</a></li>
+					<li><?php echo $this->Html->link('lines', array('controller' => 'lines', 'action' => 'index')); ?></li>
+					<li><?php echo $this->Html->link('stations', array('controller' => 'stations', 'action' => 'index')); ?></li>
 				</ul>
 			</div>
 		</div>
@@ -64,7 +64,7 @@ $cakeDescription = h("MétEX, the Paris Métro virtual tour");
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-xs-12">
-				<p>&copy;2005-2014 Richard Whittaker</p>
+				<p class="well well-sm">&copy;2005-2015 Richard Whittaker - Version "Abbesses"</p>
 			</div>
 		</div>
 	</div>

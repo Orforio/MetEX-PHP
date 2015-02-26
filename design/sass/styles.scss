@@ -32,11 +32,14 @@
 		}
 	}
 	
-	li.line-#{$i} {
-		.line-badge {
-			@extend .icon-badge;
-			background-color: nth($line-colours, $i);
-			color: contrast-color(nth($line-colours, $i), $text-colour-white, $text-colour-black);
+	li,
+	.list-group-item {
+		&.line-#{$i} {
+			.line-badge {
+				@extend .icon-badge;
+				background-color: nth($line-colours, $i);
+				color: contrast-color(nth($line-colours, $i), $text-colour-white, $text-colour-black);
+			}
 		}
 	}
 	

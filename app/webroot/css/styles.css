@@ -8030,7 +8030,23 @@ button.close {
 }
 
 /* line 12, ../../../design/sass/styles.scss */
-.icon-badge, .jumbotron.line-1 .line-badge, li.line-1 .line-badge, .jumbotron.line-2 .line-badge, li.line-2 .line-badge, .jumbotron.line-3 .line-badge, li.line-3 .line-badge, .jumbotron.line-4 .line-badge, li.line-4 .line-badge, .jumbotron.line-5 .line-badge, li.line-5 .line-badge, .jumbotron.line-6 .line-badge, li.line-6 .line-badge, .jumbotron.line-7 .line-badge, li.line-7 .line-badge, .jumbotron.line-8 .line-badge, li.line-8 .line-badge, .jumbotron.line-9 .line-badge, li.line-9 .line-badge, .jumbotron.line-10 .line-badge, li.line-10 .line-badge, .jumbotron.line-11 .line-badge, li.line-11 .line-badge, .jumbotron.line-12 .line-badge, li.line-12 .line-badge, .jumbotron.line-13 .line-badge, li.line-13 .line-badge, .jumbotron.line-14 .line-badge, li.line-14 .line-badge, .jumbotron.line-15 .line-badge, li.line-15 .line-badge, .jumbotron.line-16 .line-badge, li.line-16 .line-badge {
+.icon-badge, .jumbotron.line-1 .line-badge, li.line-1 .line-badge,
+.list-group-item.line-1 .line-badge, .jumbotron.line-2 .line-badge, li.line-2 .line-badge,
+.list-group-item.line-2 .line-badge, .jumbotron.line-3 .line-badge, li.line-3 .line-badge,
+.list-group-item.line-3 .line-badge, .jumbotron.line-4 .line-badge, li.line-4 .line-badge,
+.list-group-item.line-4 .line-badge, .jumbotron.line-5 .line-badge, li.line-5 .line-badge,
+.list-group-item.line-5 .line-badge, .jumbotron.line-6 .line-badge, li.line-6 .line-badge,
+.list-group-item.line-6 .line-badge, .jumbotron.line-7 .line-badge, li.line-7 .line-badge,
+.list-group-item.line-7 .line-badge, .jumbotron.line-8 .line-badge, li.line-8 .line-badge,
+.list-group-item.line-8 .line-badge, .jumbotron.line-9 .line-badge, li.line-9 .line-badge,
+.list-group-item.line-9 .line-badge, .jumbotron.line-10 .line-badge, li.line-10 .line-badge,
+.list-group-item.line-10 .line-badge, .jumbotron.line-11 .line-badge, li.line-11 .line-badge,
+.list-group-item.line-11 .line-badge, .jumbotron.line-12 .line-badge, li.line-12 .line-badge,
+.list-group-item.line-12 .line-badge, .jumbotron.line-13 .line-badge, li.line-13 .line-badge,
+.list-group-item.line-13 .line-badge, .jumbotron.line-14 .line-badge, li.line-14 .line-badge,
+.list-group-item.line-14 .line-badge, .jumbotron.line-15 .line-badge, li.line-15 .line-badge,
+.list-group-item.line-15 .line-badge, .jumbotron.line-16 .line-badge, li.line-16 .line-badge,
+.list-group-item.line-16 .line-badge {
   -moz-border-radius: 50%;
   -webkit-border-radius: 50%;
   border-radius: 50%;
@@ -8054,13 +8070,14 @@ button.close {
   color: #fdd017;
 }
 
-/* line 36, ../../../design/sass/styles.scss */
-li.line-1 .line-badge {
+/* line 38, ../../../design/sass/styles.scss */
+li.line-1 .line-badge,
+.list-group-item.line-1 .line-badge {
   background-color: #fdd017;
   color: #000000;
 }
 
-/* line 44, ../../../design/sass/styles.scss */
+/* line 47, ../../../design/sass/styles.scss */
 .container-fluid.line-1 .carousel-indicators > li {
   background-color: #fdd017;
 }
@@ -8076,13 +8093,14 @@ li.line-1 .line-badge {
   color: #0000a0;
 }
 
-/* line 36, ../../../design/sass/styles.scss */
-li.line-2 .line-badge {
+/* line 38, ../../../design/sass/styles.scss */
+li.line-2 .line-badge,
+.list-group-item.line-2 .line-badge {
   background-color: #0000a0;
   color: #ffffff;
 }
 
-/* line 44, ../../../design/sass/styles.scss */
+/* line 47, ../../../design/sass/styles.scss */
 .container-fluid.line-2 .carousel-indicators > li {
   background-color: #0000a0;
 }
@@ -8098,13 +8116,14 @@ li.line-2 .line-badge {
   color: #808000;
 }
 
-/* line 36, ../../../design/sass/styles.scss */
-li.line-3 .line-badge {
+/* line 38, ../../../design/sass/styles.scss */
+li.line-3 .line-badge,
+.list-group-item.line-3 .line-badge {
   background-color: #808000;
   color: #ffffff;
 }
 
-/* line 44, ../../../design/sass/styles.scss */
+/* line 47, ../../../design/sass/styles.scss */
 .container-fluid.line-3 .carousel-indicators > li {
   background-color: #808000;
 }
@@ -8120,13 +8139,14 @@ li.line-3 .line-badge {
   color: #87d3df;
 }
 
-/* line 36, ../../../design/sass/styles.scss */
-li.line-4 .line-badge {
+/* line 38, ../../../design/sass/styles.scss */
+li.line-4 .line-badge,
+.list-group-item.line-4 .line-badge {
   background-color: #87d3df;
   color: #000000;
 }
 
-/* line 44, ../../../design/sass/styles.scss */
+/* line 47, ../../../design/sass/styles.scss */
 .container-fluid.line-4 .carousel-indicators > li {
   background-color: #87d3df;
 }
@@ -8142,13 +8162,14 @@ li.line-4 .line-badge {
   color: #b93b8f;
 }
 
-/* line 36, ../../../design/sass/styles.scss */
-li.line-5 .line-badge {
+/* line 38, ../../../design/sass/styles.scss */
+li.line-5 .line-badge,
+.list-group-item.line-5 .line-badge {
   background-color: #b93b8f;
   color: #ffffff;
 }
 
-/* line 44, ../../../design/sass/styles.scss */
+/* line 47, ../../../design/sass/styles.scss */
 .container-fluid.line-5 .carousel-indicators > li {
   background-color: #b93b8f;
 }
@@ -8164,13 +8185,14 @@ li.line-5 .line-badge {
   color: #f68f4d;
 }
 
-/* line 36, ../../../design/sass/styles.scss */
-li.line-6 .line-badge {
+/* line 38, ../../../design/sass/styles.scss */
+li.line-6 .line-badge,
+.list-group-item.line-6 .line-badge {
   background-color: #f68f4d;
   color: #000000;
 }
 
-/* line 44, ../../../design/sass/styles.scss */
+/* line 47, ../../../design/sass/styles.scss */
 .container-fluid.line-6 .carousel-indicators > li {
   background-color: #f68f4d;
 }
@@ -8186,13 +8208,14 @@ li.line-6 .line-badge {
   color: #78c696;
 }
 
-/* line 36, ../../../design/sass/styles.scss */
-li.line-7 .line-badge {
+/* line 38, ../../../design/sass/styles.scss */
+li.line-7 .line-badge,
+.list-group-item.line-7 .line-badge {
   background-color: #78c696;
   color: #000000;
 }
 
-/* line 44, ../../../design/sass/styles.scss */
+/* line 47, ../../../design/sass/styles.scss */
 .container-fluid.line-7 .carousel-indicators > li {
   background-color: #78c696;
 }
@@ -8208,13 +8231,14 @@ li.line-7 .line-badge {
   color: #f59eb3;
 }
 
-/* line 36, ../../../design/sass/styles.scss */
-li.line-8 .line-badge {
+/* line 38, ../../../design/sass/styles.scss */
+li.line-8 .line-badge,
+.list-group-item.line-8 .line-badge {
   background-color: #f59eb3;
   color: #000000;
 }
 
-/* line 44, ../../../design/sass/styles.scss */
+/* line 47, ../../../design/sass/styles.scss */
 .container-fluid.line-8 .carousel-indicators > li {
   background-color: #f59eb3;
 }
@@ -8230,13 +8254,14 @@ li.line-8 .line-badge {
   color: #78c696;
 }
 
-/* line 36, ../../../design/sass/styles.scss */
-li.line-9 .line-badge {
+/* line 38, ../../../design/sass/styles.scss */
+li.line-9 .line-badge,
+.list-group-item.line-9 .line-badge {
   background-color: #78c696;
   color: #000000;
 }
 
-/* line 44, ../../../design/sass/styles.scss */
+/* line 47, ../../../design/sass/styles.scss */
 .container-fluid.line-9 .carousel-indicators > li {
   background-color: #78c696;
 }
@@ -8252,13 +8277,14 @@ li.line-9 .line-badge {
   color: #c5a3cc;
 }
 
-/* line 36, ../../../design/sass/styles.scss */
-li.line-10 .line-badge {
+/* line 38, ../../../design/sass/styles.scss */
+li.line-10 .line-badge,
+.list-group-item.line-10 .line-badge {
   background-color: #c5a3cc;
   color: #000000;
 }
 
-/* line 44, ../../../design/sass/styles.scss */
+/* line 47, ../../../design/sass/styles.scss */
 .container-fluid.line-10 .carousel-indicators > li {
   background-color: #c5a3cc;
 }
@@ -8274,13 +8300,14 @@ li.line-10 .line-badge {
   color: #cec82b;
 }
 
-/* line 36, ../../../design/sass/styles.scss */
-li.line-11 .line-badge {
+/* line 38, ../../../design/sass/styles.scss */
+li.line-11 .line-badge,
+.list-group-item.line-11 .line-badge {
   background-color: #cec82b;
   color: #000000;
 }
 
-/* line 44, ../../../design/sass/styles.scss */
+/* line 47, ../../../design/sass/styles.scss */
 .container-fluid.line-11 .carousel-indicators > li {
   background-color: #cec82b;
 }
@@ -8296,13 +8323,14 @@ li.line-11 .line-badge {
   color: #e0b03a;
 }
 
-/* line 36, ../../../design/sass/styles.scss */
-li.line-12 .line-badge {
+/* line 38, ../../../design/sass/styles.scss */
+li.line-12 .line-badge,
+.list-group-item.line-12 .line-badge {
   background-color: #e0b03a;
   color: #000000;
 }
 
-/* line 44, ../../../design/sass/styles.scss */
+/* line 47, ../../../design/sass/styles.scss */
 .container-fluid.line-12 .carousel-indicators > li {
   background-color: #e0b03a;
 }
@@ -8318,13 +8346,14 @@ li.line-12 .line-badge {
   color: #8d663a;
 }
 
-/* line 36, ../../../design/sass/styles.scss */
-li.line-13 .line-badge {
+/* line 38, ../../../design/sass/styles.scss */
+li.line-13 .line-badge,
+.list-group-item.line-13 .line-badge {
   background-color: #8d663a;
   color: #ffffff;
 }
 
-/* line 44, ../../../design/sass/styles.scss */
+/* line 47, ../../../design/sass/styles.scss */
 .container-fluid.line-13 .carousel-indicators > li {
   background-color: #8d663a;
 }
@@ -8340,13 +8369,14 @@ li.line-13 .line-badge {
   color: #028d5b;
 }
 
-/* line 36, ../../../design/sass/styles.scss */
-li.line-14 .line-badge {
+/* line 38, ../../../design/sass/styles.scss */
+li.line-14 .line-badge,
+.list-group-item.line-14 .line-badge {
   background-color: #028d5b;
   color: #ffffff;
 }
 
-/* line 44, ../../../design/sass/styles.scss */
+/* line 47, ../../../design/sass/styles.scss */
 .container-fluid.line-14 .carousel-indicators > li {
   background-color: #028d5b;
 }
@@ -8362,13 +8392,14 @@ li.line-14 .line-badge {
   color: #89c7d6;
 }
 
-/* line 36, ../../../design/sass/styles.scss */
-li.line-15 .line-badge {
+/* line 38, ../../../design/sass/styles.scss */
+li.line-15 .line-badge,
+.list-group-item.line-15 .line-badge {
   background-color: #89c7d6;
   color: #000000;
 }
 
-/* line 44, ../../../design/sass/styles.scss */
+/* line 47, ../../../design/sass/styles.scss */
 .container-fluid.line-15 .carousel-indicators > li {
   background-color: #89c7d6;
 }
@@ -8384,13 +8415,14 @@ li.line-15 .line-badge {
   color: #672f8f;
 }
 
-/* line 36, ../../../design/sass/styles.scss */
-li.line-16 .line-badge {
+/* line 38, ../../../design/sass/styles.scss */
+li.line-16 .line-badge,
+.list-group-item.line-16 .line-badge {
   background-color: #672f8f;
   color: #ffffff;
 }
 
-/* line 44, ../../../design/sass/styles.scss */
+/* line 47, ../../../design/sass/styles.scss */
 .container-fluid.line-16 .carousel-indicators > li {
   background-color: #672f8f;
 }

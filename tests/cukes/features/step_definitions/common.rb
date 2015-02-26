@@ -37,6 +37,10 @@ Then(/^I see "(.*?)"$/) do |text|
   page.should have_text(text)
 end
 
+Then(/^I don't see "(.*?)"$/) do |text|
+  page.should have_no_content(text)
+end
+
 Then(/^I see the "(.*?)" element "(.*?)"$/) do |element, text|
   find(element).should have_text(text)
 end

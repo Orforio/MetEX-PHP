@@ -1,5 +1,5 @@
 #encoding: utf-8
-@active
+
 Feature: Stations - Connections
   As a passenger,
   I want to be able to see available interchanges at the current station

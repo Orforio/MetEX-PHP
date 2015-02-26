@@ -14,7 +14,8 @@ class LinesController extends AppController {
  *
  * @var array
  */
-	public $components = array('Paginator', 'Session');
+	public $components = array('Session');
+	public $helpers = array('LineBadge', 'Html');
 
 /**
  * index method
@@ -22,8 +23,7 @@ class LinesController extends AppController {
  * @return void
  */
 	public function index() {
-		$this->Line->recursive = 0;
-		$this->set('lines', $this->Paginator->paginate());
+		$this->set('lines', $this->Line->find('all', array('conditions' => array('Line.active' => true))));
 	}
 
 /**

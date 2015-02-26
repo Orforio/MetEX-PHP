@@ -20,4 +20,4 @@ Feature: Lines - Index
     
   Scenario: Inactive line
     When I visit "/lines"
-    Then I don't see "13"
+    Then I don't see "Line 13"

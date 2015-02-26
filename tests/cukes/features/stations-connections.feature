@@ -1,5 +1,5 @@
 #encoding: utf-8
-
+@active
 Feature: Stations - Connections
   As a passenger,
   I want to be able to see available interchanges at the current station
@@ -20,8 +20,8 @@ Feature: Stations - Connections
       | 6        | Bercy       |
     
   Scenario: Station belongs to an interchange and connects to two or more lines
-    When I visit "/stations/view/1"
+    When I visit "/stations/view/107"
     Then there are 2 connections
     And I see the following connections:
       | 3        | Saint-Lazare |
-      | 12       | Saint-Lazare |
+      | 14       | Saint-Lazare |

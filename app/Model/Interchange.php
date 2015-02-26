@@ -54,7 +54,7 @@ class Interchange extends AppModel {
 			'dependent' => false,
 			'conditions' => '',
 			'fields' => '',
-			'order' => '',
+			'order' => 'line_id ASC',
 			'limit' => '',
 			'offset' => '',
 			'exclusive' => '',

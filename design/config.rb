@@ -8,6 +8,7 @@ http_path = "/"
 css_dir = "../app/webroot/css"
 sass_dir = "sass"
 images_dir = "../app/webroot/img"
+fonts_dir = "../app/webroot/fonts"
 javascripts_dir = "../app/webroot/js"
 http_stylesheets_path = 'css'
 http_javascripts_path = 'js'
@@ -17,7 +18,7 @@ http_images_path = 'img'
 output_style = :expanded
 
 # To enable relative paths to assets via compass helper functions. Uncomment:
-# relative_assets = true
+relative_assets = true
 
 # To disable debugging comments that display the original location of your selectors. Uncomment:
 # line_comments = false

@@ -20,4 +20,4 @@
 		</div>
 	</div>
 </div>
-<?php debug($line); ?>
+<?php if (Configure::read('debug')) { debug($line); } ?>

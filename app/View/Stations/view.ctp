@@ -32,4 +32,4 @@
 		</div>
 	</div>
 </div>
-<?php debug($station); ?>
+<?php if (Configure::read('debug')) { debug($station); } ?>

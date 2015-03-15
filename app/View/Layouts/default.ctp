@@ -1,23 +1,4 @@
-<?php
-/**
- *
- *
- * CakePHP(tm) : Rapid Development Framework (http://cakephp.org)
- * Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
- *
- * Licensed under The MIT License
- * For full copyright and license information, please see the LICENSE.txt
- * Redistributions of files must retain the above copyright notice.
- *
- * @copyright     Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
- * @link          http://cakephp.org CakePHP(tm) Project
- * @package       app.View.Layouts
- * @since         CakePHP(tm) v 0.10.0.1076
- * @license       http://www.opensource.org/licenses/mit-license.php MIT License
- */
-
-$cakeDescription = h("MétEX, the Paris Métro virtual tour");
-?>
+<?php $cakeDescription = h("MétEX, the Paris Métro virtual tour"); ?>
 <?php echo $this->Html->docType('html5'); ?>
 <html>
 <head>
@@ -54,7 +35,7 @@ $cakeDescription = h("MétEX, the Paris Métro virtual tour");
 			<div class="collapse navbar-collapse" id="navbar-collapse">
 				<ul class="nav navbar-nav">
 					<li><?php echo $this->Html->link('lines', array('controller' => 'lines', 'action' => 'index')); ?></li>
-					<li><?php echo $this->Html->link('stations', array('controller' => 'stations', 'action' => 'index')); ?></li>
+					<!--<li><?php echo $this->Html->link('stations', array('controller' => 'stations', 'action' => 'index')); ?></li>-->
 				</ul>
 			</div>
 		</div>
@@ -64,10 +45,10 @@ $cakeDescription = h("MétEX, the Paris Métro virtual tour");
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-xs-12">
-				<p class="well well-sm">&copy;2005-2015 Richard Whittaker - Version "Abbesses"</p>
+				<p class="well well-sm text-center"><small>&copy;2005-2015 Richard Whittaker - Milestone <em>Abbesses</em> - <?php echo $this->Html->link('Please report any bugs on GitHub', 'https://github.com/PkerUNO/MetEX/issues', array('confirm' => 'Please report only bugs and suggestions to do with the workings of the site and not the content. I am aware the line data and photos are out of date, these will be updated in a future version.')); ?></small></p>
 			</div>
 		</div>
 	</div>
-	<?php echo $this->element('sql_dump'); ?>
+	<?php if (Configure::read('debug')) { echo $this->element('sql_dump'); } ?>
 </body>
 </html>

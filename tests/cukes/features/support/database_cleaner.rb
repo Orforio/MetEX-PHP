@@ -5,7 +5,7 @@ begin
   require 'mysql2'
   
   # Retrieve Cucumber-specific database details from CakePHP's config
-  config_file = File.open(File.expand_path('../../app/Config/database.php'), 'r', :encoding => 'UTF-8').read[/public \$cucumber = array\((.+)\);/m, 1]
+  config_file = File.open(File.expand_path('../../app/Config/database.php'), 'r', :encoding => 'UTF-8').read[/public \$cucumber = array\((.+)\);$/m, 1]
   db_config = eval("{" + config_file + "}")
   
   DB = Sequel.connect("mysql2://#{db_config['login']}:#{db_config['password']}@#{db_config['host']}:#{db_config['port']}/#{db_config['database']}")

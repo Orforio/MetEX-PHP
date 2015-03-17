@@ -53,7 +53,3 @@ Then(/^I remember "(.*?)"'s ID$/) do |movement_data|
     @movement_changed_data[:id] = id
   end
 end
-
-Then(/^I see an error message$/) do
-  page.title.should have_text("Errors")
-end

@@ -58,3 +58,7 @@ end
 Then(/^I cannot click on "(.*?)"$/) do |text|
   expect {click_link(text)}.to raise_error(Capybara::ElementNotFound)
 end
+
+Then(/^I see an error message$/) do
+  page.should have_text("Error:")
+end

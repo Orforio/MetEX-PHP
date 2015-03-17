@@ -37,16 +37,23 @@ class LinesController extends AppController {
 		if (!$this->Line->exists($id)) {
 			throw new NotFoundException(__('Invalid line'));
 		}
-		$options = array('conditions' => array('Line.' . $this->Line->primaryKey => $id));
-		$this->set('line', $this->Line->find('first', $options));
+		$options = array('conditions' => array('Line.' . $this->Line->primaryKey => $id, 'Line.active' => true));
+		$line = $this->Line->find('first', $options);
+		
+		if (empty($line)) {
+			throw new NotFoundException('Invalid line');
+		} else {
+			$this->set('line', $line);
+		}
 	}
 
 /**
- * add method
+ * admin_add method
  *
  * @return void
  */
-	public function add() {
+	public function admin_add() {
+		if (Configure::read('debug') == 0) { throw new NotFoundException(); } // Temporary authentication work-around
 		if ($this->request->is('post')) {
 			$this->Line->create();
 			if ($this->Line->save($this->request->data)) {
@@ -61,13 +68,14 @@ class LinesController extends AppController {
 	}
 
 /**
- * edit method
+ * admin_edit method
  *
  * @throws NotFoundException
  * @param string $id
  * @return void
  */
-	public function edit($id = null) {
+	public function admin_edit($id = null) {
+		if (Configure::read('debug') == 0) { throw new NotFoundException(); } // Temporary authentication work-around
 		if (!$this->Line->exists($id)) {
 			throw new NotFoundException(__('Invalid line'));
 		}
@@ -87,13 +95,14 @@ class LinesController extends AppController {
 	}
 
 /**
- * delete method
+ * admin_delete method
  *
  * @throws NotFoundException
  * @param string $id
  * @return void
  */
-	public function delete($id = null) {
+	public function admin_delete($id = null) {
+		if (Configure::read('debug') == 0) { throw new NotFoundException(); } // Temporary authentication work-around
 		$this->Line->id = $id;
 		if (!$this->Line->exists()) {
 			throw new NotFoundException(__('Invalid line'));
@@ -105,4 +114,6 @@ class LinesController extends AppController {
 			$this->Session->setFlash(__('The line could not be deleted. Please, try again.'));
 		}
 		return $this->redirect(array('action' => 'index'));
-	}}
+	}
+	
+}

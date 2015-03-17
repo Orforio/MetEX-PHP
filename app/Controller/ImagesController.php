@@ -21,6 +21,7 @@ class ImagesController extends AppController {
  * @return void
  */
 	public function admin_index() {
+		if (Configure::read('debug') == 0) { throw new NotFoundException(); } // Temporary authentication work-around
 		$this->Image->recursive = 0;
 		$this->set('images', $this->Paginator->paginate());
 	}
@@ -33,6 +34,7 @@ class ImagesController extends AppController {
  * @return void
  */
 	public function admin_view($id = null) {
+		if (Configure::read('debug') == 0) { throw new NotFoundException(); } // Temporary authentication work-around
 		if (!$this->Image->exists($id)) {
 			throw new NotFoundException(__('Invalid image'));
 		}
@@ -46,6 +48,7 @@ class ImagesController extends AppController {
  * @return void
  */
 	public function admin_add() {
+		if (Configure::read('debug') == 0) { throw new NotFoundException(); } // Temporary authentication work-around
 		if ($this->request->is('post')) {
 			$this->Image->create();
 			if ($this->Image->save($this->request->data)) {
@@ -68,6 +71,7 @@ class ImagesController extends AppController {
  * @return void
  */
 	public function admin_edit($id = null) {
+		if (Configure::read('debug') == 0) { throw new NotFoundException(); } // Temporary authentication work-around
 		if (!$this->Image->exists($id)) {
 			throw new NotFoundException(__('Invalid image'));
 		}
@@ -92,6 +96,7 @@ class ImagesController extends AppController {
  * @return void
  */
 	public function admin_delete($id = null) {
+		if (Configure::read('debug') == 0) { throw new NotFoundException(); } // Temporary authentication work-around
 		$this->Image->id = $id;
 		if (!$this->Image->exists()) {
 			throw new NotFoundException(__('Invalid image'));

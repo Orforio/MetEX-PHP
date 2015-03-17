@@ -24,11 +24,13 @@ class StationsController extends AppController {
 	public $helpers = array('Navigation', 'Image', 'LineBadge', 'Html');
 
 /**
- * index method
+ * admin_index method
  *
  * @return void
  */
-	public function index() {
+
+	public function admin_index() {
+		if (Configure::read('debug') == 0) { throw new NotFoundException(); } // Temporary authentication work-around
 		$this->Station->recursive = 0;
 		$this->set('stations', $this->Paginator->paginate());
 	}
@@ -49,11 +51,12 @@ class StationsController extends AppController {
 	}
 
 /**
- * add method
+ * admin_add method
  *
  * @return void
  */
-	public function add() {
+	public function admin_add() {
+		if (Configure::read('debug') == 0) { throw new NotFoundException(); } // Temporary authentication work-around
 		if ($this->request->is('post')) {
 			$this->Station->create();
 			if ($this->Station->save($this->request->data)) {
@@ -70,13 +73,14 @@ class StationsController extends AppController {
 	}
 
 /**
- * edit method
+ * admin_edit method
  *
  * @throws NotFoundException
  * @param string $id
  * @return void
  */
-	public function edit($id = null) {
+	public function admin_edit($id = null) {
+		if (Configure::read('debug') == 0) { throw new NotFoundException(); } // Temporary authentication work-around
 		if (!$this->Station->exists($id)) {
 			throw new NotFoundException(__('Invalid station'));
 		}
@@ -98,13 +102,14 @@ class StationsController extends AppController {
 	}
 
 /**
- * delete method
+ * admin_delete method
  *
  * @throws NotFoundException
  * @param string $id
  * @return void
  */
-	public function delete($id = null) {
+	public function admin_delete($id = null) {
+		if (Configure::read('debug') == 0) { throw new NotFoundException(); } // Temporary authentication work-around
 		$this->Station->id = $id;
 		if (!$this->Station->exists()) {
 			throw new NotFoundException(__('Invalid station'));
@@ -116,4 +121,6 @@ class StationsController extends AppController {
 			$this->Session->setFlash(__('The station could not be deleted. Please, try again.'));
 		}
 		return $this->redirect(array('action' => 'index'));
-	}}
+	}	
+	
+}

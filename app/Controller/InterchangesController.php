@@ -17,23 +17,25 @@ class InterchangesController extends AppController {
 	public $components = array('Paginator', 'Session');
 
 /**
- * index method
+ * admin_index method
  *
  * @return void
  */
-	public function index() {
+	public function admin_index() {
+		if (Configure::read('debug') == 0) { throw new NotFoundException(); } // Temporary authentication work-around
 		$this->Interchange->recursive = 0;
 		$this->set('interchanges', $this->Paginator->paginate());
 	}
 
 /**
- * view method
+ * admin_view method
  *
  * @throws NotFoundException
  * @param string $id
  * @return void
  */
-	public function view($id = null) {
+	public function admin_view($id = null) {
+		if (Configure::read('debug') == 0) { throw new NotFoundException(); } // Temporary authentication work-around
 		if (!$this->Interchange->exists($id)) {
 			throw new NotFoundException(__('Invalid interchange'));
 		}
@@ -42,12 +44,12 @@ class InterchangesController extends AppController {
 	}
 
 /**
- * add method
+ * admin_add method
  *
  * @return void
  */
-	public function add() {
-		if ($this->request->is('post')) {
+	public function admin_add() {
+		if (Configure::read('debug') == 0) { throw new NotFoundException(); } // Temporary authentication work-around		if ($this->request->is('post')) {
 			$this->Interchange->create();
 			if ($this->Interchange->save($this->request->data)) {
 				$this->Session->setFlash(__('The interchange has been saved.'));
@@ -59,13 +61,14 @@ class InterchangesController extends AppController {
 	}
 
 /**
- * edit method
+ * admin_edit method
  *
  * @throws NotFoundException
  * @param string $id
  * @return void
  */
-	public function edit($id = null) {
+	public function admin_edit($id = null) {
+		if (Configure::read('debug') == 0) { throw new NotFoundException(); } // Temporary authentication work-around
 		if (!$this->Interchange->exists($id)) {
 			throw new NotFoundException(__('Invalid interchange'));
 		}
@@ -81,15 +84,17 @@ class InterchangesController extends AppController {
 			$this->request->data = $this->Interchange->find('first', $options);
 		}
 	}
+	}
 
 /**
- * delete method
+ * admin_delete method
  *
  * @throws NotFoundException
  * @param string $id
  * @return void
  */
-	public function delete($id = null) {
+	public function admin_delete($id = null) {
+		if (Configure::read('debug') == 0) { throw new NotFoundException(); } // Temporary authentication work-around
 		$this->Interchange->id = $id;
 		if (!$this->Interchange->exists()) {
 			throw new NotFoundException(__('Invalid interchange'));
@@ -101,4 +106,6 @@ class InterchangesController extends AppController {
 			$this->Session->setFlash(__('The interchange could not be deleted. Please, try again.'));
 		}
 		return $this->redirect(array('action' => 'index'));
-	}}
+	}
+	
+}

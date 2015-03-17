@@ -17,23 +17,25 @@ class MovementsController extends AppController {
 	public $components = array('Paginator', 'Session');
 
 /**
- * index method
+ * admin_index method
  *
  * @return void
  */
 	public function admin_index() {
+		if (Configure::read('debug') == 0) { throw new NotFoundException(); } // Temporary authentication work-around
 		$this->Movement->recursive = 0;
 		$this->set('movements', $this->Paginator->paginate());
 	}
 
 /**
- * view method
+ * admin_view method
  *
  * @throws NotFoundException
  * @param string $id
  * @return void
  */
 	public function admin_view($id = null) {
+		if (Configure::read('debug') == 0) { throw new NotFoundException(); } // Temporary authentication work-around
 		if (!$this->Movement->exists($id)) {
 			throw new NotFoundException(__('Invalid movement'));
 		}
@@ -47,6 +49,7 @@ class MovementsController extends AppController {
  * @return void
  */
 	public function admin_add() {
+		if (Configure::read('debug') == 0) { throw new NotFoundException(); } // Temporary authentication work-around
 		if ($this->request->is('post')) {
 			$this->Movement->create();
 			if ($this->Movement->save($this->request->data)) {
@@ -68,6 +71,7 @@ class MovementsController extends AppController {
  * @return void
  */
 	public function admin_edit($id = null) {
+		if (Configure::read('debug') == 0) { throw new NotFoundException(); } // Temporary authentication work-around
 		if (!$this->Movement->exists($id)) {
 			throw new NotFoundException(__('Invalid movement'));
 		}
@@ -94,6 +98,7 @@ class MovementsController extends AppController {
  * @return void
  */
 	public function admin_delete($id = null) {
+		if (Configure::read('debug') == 0) { throw new NotFoundException(); } // Temporary authentication work-around
 		$this->Movement->id = $id;
 		if (!$this->Movement->exists()) {
 			throw new NotFoundException(__('Invalid movement'));
@@ -105,4 +110,6 @@ class MovementsController extends AppController {
 			$this->Session->setFlash(__('The movement could not be deleted. Please, try again.'));
 		}
 		return $this->redirect(array('action' => 'index'));
-	}}
+	}	
+
+}

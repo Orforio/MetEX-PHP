@@ -49,7 +49,8 @@ class InterchangesController extends AppController {
  * @return void
  */
 	public function admin_add() {
-		if (Configure::read('debug') == 0) { throw new NotFoundException(); } // Temporary authentication work-around		if ($this->request->is('post')) {
+		if (Configure::read('debug') == 0) { throw new NotFoundException(); } // Temporary authentication work-around		
+		if ($this->request->is('post')) {
 			$this->Interchange->create();
 			if ($this->Interchange->save($this->request->data)) {
 				$this->Session->setFlash(__('The interchange has been saved.'));
@@ -83,7 +84,6 @@ class InterchangesController extends AppController {
 			$options = array('conditions' => array('Interchange.' . $this->Interchange->primaryKey => $id));
 			$this->request->data = $this->Interchange->find('first', $options);
 		}
-	}
 	}
 
 /**

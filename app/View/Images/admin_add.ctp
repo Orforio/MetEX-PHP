@@ -1,3 +1,4 @@
+<?php $this->assign('title', 'Admin > Images > Add'); ?>
 <div class="jumbotron">
 	<div class="container">
 		<h1>Add Image</h1>
@@ -20,8 +21,12 @@
 				'error' => array('attributes' => array('wrap' => 'span', 'class' => 'help-inline')),
 			))); ?>
 		<?php
-			echo $this->Form->input('station_id');
-			echo $this->Form->input('place_id');
+			echo $this->Form->input('station_id', array(
+				'empty' => 'None'
+			));
+			echo $this->Form->input('place_id', array(
+				'empty' => 'None'
+			));
 			echo $this->Form->input('filename');
 			echo $this->Form->input('title');
 			echo $this->Form->input('alt');

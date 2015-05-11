@@ -24,21 +24,29 @@ class Image extends AppModel {
 		'station_id' => array(
 			'naturalNumber' => array(
 				'rule' => array('naturalNumber'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+				'message' => 'Invalid StationID',
+				'allowEmpty' => true,
+				'required' => true,
+				'on' => 'update' // Limit validation to 'create' or 'update' operations
+			),
+			'stationOrPlace' => array(
+				'rule' => 'stationOrPlace',
+				'message' => 'Place must be assigned to a Station or a Place (or both)'
 			),
 		),
-	//	'place_id' => array(
-	//		'naturalNumber' => array(
-	//			'rule' => array('naturalNumber'),
-	//			'message' => 'Invalid PlaceID',
-	//			'allowEmpty' => true,
-	//			'required' => true
-	//		),
-	//	),
+		'place_id' => array(
+			'naturalNumber' => array(
+				'rule' => array('naturalNumber'),
+				'message' => 'Invalid PlaceID',
+				'allowEmpty' => true,
+				'required' => true,
+				'on' => 'update' // Limit validation to 'create' or 'update' operations
+			),
+			'stationOrPlace' => array(
+				'rule' => 'stationOrPlace',
+				'message' => 'Place must be assigned to a Station or a Place (or both)'
+			),
+		),
 		'filename' => array(
 			'notEmpty' => array(
 				'rule' => array('notEmpty'),
@@ -92,4 +100,12 @@ class Image extends AppModel {
 			'order' => ''
 		)
 	);
+	
+	public function stationOrPlace() {
+		if (!empty($this->data['Image']['station_id']) || !empty($this->data['Image']['place_id'])) {
+			return true;	
+		} else {
+			return false;
+		}
+	}
 }

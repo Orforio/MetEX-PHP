@@ -53,7 +53,7 @@ class ImagesController extends AppController {
 			$this->Image->create();
 			if ($this->Image->save($this->request->data)) {
 				$this->Session->setFlash(__('The image has been saved.'));
-			//	return $this->redirect(array('admin' => true, 'action' => 'add'));
+				return $this->redirect(array('action' => 'add'));
 			} else {
 				$this->Session->setFlash(__('The movement could not be saved. Please, try again.'));
 			}

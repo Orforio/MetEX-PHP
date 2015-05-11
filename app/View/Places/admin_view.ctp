@@ -1,4 +1,4 @@
-<?php $this->assign('title', 'Admin > Places >'. $place['Place']['name']); ?>
+<?php $this->assign('title', 'Admin > Places > View > '. $place['Place']['name']); ?>
 <div class="jumbotron">
 	<div class="container">
 		<h1>View Place</h1>

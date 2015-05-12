@@ -15,6 +15,28 @@ class PlacesController extends AppController {
  * @var array
  */
 	public $components = array('Paginator', 'Session');
+	
+/**
+ * Helpers
+ *
+ * @var array
+ */
+	public $helpers = array('Image', 'Html');
+	
+/**
+ * view method
+ *
+ * @throws NotFoundException
+ * @param string $id
+ * @return void
+ */
+	public function view($id = null) {
+		if (!$this->Place->exists($id)) {
+			throw new NotFoundException(__('Invalid place'));
+		}
+		$options = array('conditions' => array('Place.' . $this->Place->primaryKey => $id));
+		$this->set('place', $this->Place->find('first', $options));
+	}
 
 /**
  * admin_index method

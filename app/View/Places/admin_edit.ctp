@@ -1,4 +1,4 @@
-<?php $this->assign('title', 'Admin > Places > Edit > '. $place['Place']['name']); ?>
+<?php $this->assign('title', 'Admin > Places > Edit > '. $this->data['Place']['name']); ?>
 <div class="jumbotron">
 	<div class="container">
 		<h1>Edit Place</h1>
@@ -21,7 +21,7 @@
 				))); ?>
 			<?php
 				echo $this->Form->input('id');
-				echo $this->Form->input('name');
+				echo $this->Form->input('name', array('type' => 'text'));
 				echo $this->Form->input('description');
 				echo $this->Form->input('Station');
 			?>

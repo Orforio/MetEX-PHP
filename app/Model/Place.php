@@ -14,6 +14,8 @@ class Place extends AppModel {
  * @var string
  */
 	public $displayField = 'name';
+	
+	public $recursive = 2;	// TODO: Temporary fix to enable Line data in Stations.
 
 /**
  * Validation rules
@@ -38,8 +40,8 @@ class Place extends AppModel {
 				'required' => true
 			),
 			'maxLength' => array(
-				'rule' => array('maxLength' => 255),
-				'message' => 'Name must not be longer than 255 characters'
+				'rule' => array('maxLength', 255),
+				'message' => 'Name must not be longer than 255 characters',
 			),
 		),
 		'description' => array(
@@ -88,7 +90,7 @@ class Place extends AppModel {
 			'unique' => 'keepExisting',
 			'conditions' => '',
 			'fields' => '',
-			'order' => '',
+			'order' => 'line_id ASC',
 			'limit' => '',
 			'offset' => '',
 			'finderQuery' => '',

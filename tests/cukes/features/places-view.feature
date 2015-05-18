@@ -23,3 +23,10 @@ Feature: Places - View
       | /media/images/stations/16/1-7.jpg |
       | /media/images/stations/16/1-8.jpg |
       | /media/images/stations/16/1-9.jpg |
+      
+  Scenario: Viewing nearby stations
+    When I visit "/places/view/2"
+    Then there are 2 nearby stations
+    And I see the following nearby stations:
+      | 3    | Gambetta |
+      | 3bis | Gambetta |

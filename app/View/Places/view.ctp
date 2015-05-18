@@ -13,31 +13,11 @@
 			<p><?php echo h($place['Place']['description']); ?></p>
 		</div>
 	</div>
-</div>
-<?php if (Configure::read('debug')) { debug($place); } ?>	
-<!--	
-	
-	
-	
-	
-	
-				<?php //foreach ($place['Station'] as $station): ?>
-				<tr>
-					<td><?php //echo $station['id']; ?></td>
-					<td><?php //echo $station['name']; ?></td>
-					<td><?php //echo $station['line_id']; ?></td>
-					<td><?php //echo $station['description']; ?></td>
-					<td><?php //echo $station['interchange_id']; ?></td>
-					<td><?php //echo $station['active']; ?></td>
-					<td class="info">
-						<?php //echo $this->Html->link(__('View'), array('controller' => 'stations', 'action' => 'view', $station['id'])); ?>
-						<?php //echo $this->Html->link(__('Edit'), array('controller' => 'stations', 'action' => 'edit', $station['id'])); ?>
-						<?php //echo $this->Form->postLink(__('Delete'), array('controller' => 'stations', 'action' => 'delete', $station['id']), null, __('Are you sure you want to delete # %s?', $station['id'])); ?>
-					</td>
-				</tr>
-				<?php //endforeach; ?>
-			</table>
-			<?php //endif; ?>
+	<div class="row">
+		<div class="col-xs-12" id="nav-place-stations">
+			<h2>Nearby stations</h2>
+			<?php echo $this->Navigation->addConnectionsList($place, 2); ?>
 		</div>
 	</div>
-</div>-->
+</div>
+<?php if (Configure::read('debug')) { debug($place); } ?>

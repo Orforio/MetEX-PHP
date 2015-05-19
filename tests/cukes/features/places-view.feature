@@ -1,5 +1,5 @@
 #encoding: utf-8
-@active
+
 Feature: Places - View
   As a passenger,
   I want to see places of interest near the current station

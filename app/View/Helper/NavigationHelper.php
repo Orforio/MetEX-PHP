@@ -69,4 +69,20 @@ class NavigationHelper extends AppHelper {
 	    
 	    return $listOutput;
     }
+    
+    public function addPlacesList($places = null) {
+	    $listOutput = '';
+	    
+	    if (isset($places[0]['id'])) {
+		    $listOutput .= '<ul>';
+		    foreach ($places as $place) {
+			    $listOutput .= '<li>' . $this->Html->link($place['name'], array('controller' => 'places', 'action' => 'view', $place['id'])) . '</li>';
+		    }
+		    $listOutput .= '</ul>';
+	    } else {
+		    $listOutput = $this->Html->para(null, 'No places nearby');
+	    }
+	    
+	    return $listOutput;
+    }
 }

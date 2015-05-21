@@ -46,7 +46,7 @@ Then(/^I see the following connections:$/) do |table|
 end
 
 Then(/^there (?:are|is) (\d+) nearby place[s]?$/) do |number|
-  expect('#nav-station-places').to have_selector('li', count: number)
+  page.assert_selector('#nav-station-places li', :count => number)
 end
 
 Then(/^I see the following nearby places:$/) do |table|

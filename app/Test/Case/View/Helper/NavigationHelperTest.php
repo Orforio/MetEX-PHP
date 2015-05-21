@@ -124,11 +124,11 @@ class NavigationHelperTest extends CakeTestCase {
 		// Good data
 		$this->assertXmlStringEqualsXmlString('<p>No places nearby</p>', $this->Navigation->addPlacesList($stationCourSEDataStripped));
 		$this->assertXmlStringEqualsXmlString('<ul><li><a href="/places/view/1">Saint-Lazare station</a></li></ul>', $this->Navigation->addPlacesList($stationSaintLazareDataStripped));
-		$this->assertXmlStringEqualsXmlString('<ul><li><a href="/places/view/3">Gambetta station</a></li><li><a href="/places/view/2">Old running tunnels, Gambetta</a></li>', $this->Navigation->addPlacesList($stationGambettaDataStripped));
+		$this->assertXmlStringEqualsXmlString('<ul><li><a href="/places/view/3">Gambetta station</a></li><li><a href="/places/view/2">Old running tunnels, Gambetta</a></li></ul>', $this->Navigation->addPlacesList($stationGambettaDataStripped));
 		
 		// Bad data
 		$this->assertXmlStringEqualsXmlString('<p>No places nearby</p>', $this->Navigation->addPlacesList(null));
-		$this->assertXmlStringEqualsXmlString('<p>No places nearby</p>', $this->Navigation->addPlacesList($stationBercyData));
+		$this->assertXmlStringEqualsXmlString('<p>No places nearby</p>', $this->Navigation->addPlacesList($stationCourSEData));
 		$this->assertXmlStringEqualsXmlString('<p>No places nearby</p>', $this->Navigation->addPlacesList("Nonsense"));
 	}
 

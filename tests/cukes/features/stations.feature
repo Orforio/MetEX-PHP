@@ -1,5 +1,5 @@
 #encoding: utf-8
-
+@active
 Feature: Stations
   In order to browse the Stations
   As a visitor 

@@ -28,7 +28,7 @@
 		</div>
 		<div class="col-sm-6" id="nav-station-places">
 			<h2>Places</h2>
-			<p>Not yet implemented</p>
+			<?php echo $this->Navigation->addPlacesList($station['Place']); ?>
 		</div>
 	</div>
 </div>

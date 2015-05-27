@@ -16,7 +16,7 @@ class NavigationHelperTest extends CakeTestCase {
  * @var array
  */
 	public $fixtures = array(
-		'line', 'station', 'interchange', 'movement', 'image', 'station_movement', 'stock', 'place'
+		'line', 'station', 'interchange', 'movement', 'image', 'station_movement', 'stock', 'place', 'place_station'
 	);
 
 /**
@@ -98,6 +98,38 @@ class NavigationHelperTest extends CakeTestCase {
 		$this->assertXmlStringEqualsXmlString('<p>No connections</p>', $this->Navigation->addConnectionsList($stationBercyDataStripped));
 		$this->assertXmlStringEqualsXmlString('<p>No connections</p>', $this->Navigation->addConnectionsList($stationBercyData, 6));
 		$this->assertXmlStringEqualsXmlString('<p>No connections</p>', $this->Navigation->addConnectionsList($stationBercyDataStripped, 'six'));
+	}
+	
+/**
+ * testAddConnectionsList method
+ *
+ * @return void
+ */
+
+	public function testAddPlacesList() {
+		$stationCourSEData = $this->Station->find('first', array(
+			'conditions' => array('Station.id' => 7),
+			'recursive' => 3));
+		$stationSaintLazareData = $this->Station->find('first', array(
+			'conditions' => array('Station.id' => 1),
+			'recursive' => 3));
+		$stationGambettaData = $this->Station->find('first', array(
+			'conditions' => array('Station.id' => 43),
+			'recursive' => 3));
+			
+		$stationCourSEDataStripped = $stationCourSEData['Place'];
+		$stationSaintLazareDataStripped = $stationSaintLazareData['Place'];
+		$stationGambettaDataStripped = $stationGambettaData['Place'];
+		
+		// Good data
+		$this->assertXmlStringEqualsXmlString('<p>No places nearby</p>', $this->Navigation->addPlacesList($stationCourSEDataStripped));
+		$this->assertXmlStringEqualsXmlString('<ul><li><a href="/places/view/1">Saint-Lazare station</a></li></ul>', $this->Navigation->addPlacesList($stationSaintLazareDataStripped));
+		$this->assertXmlStringEqualsXmlString('<ul><li><a href="/places/view/3">Gambetta station</a></li><li><a href="/places/view/2">Old running tunnels, Gambetta</a></li></ul>', $this->Navigation->addPlacesList($stationGambettaDataStripped));
+		
+		// Bad data
+		$this->assertXmlStringEqualsXmlString('<p>No places nearby</p>', $this->Navigation->addPlacesList(null));
+		$this->assertXmlStringEqualsXmlString('<p>No places nearby</p>', $this->Navigation->addPlacesList($stationCourSEData));
+		$this->assertXmlStringEqualsXmlString('<p>No places nearby</p>', $this->Navigation->addPlacesList("Nonsense"));
 	}
 
 }

@@ -24,5 +24,5 @@ Feature: Stations
     
   Scenario: Using places
     When I visit "/stations/view/12"
-    Then I see the "#nav-station-places h2" element "Places"
-    And I see "Not yet implemented"
+    And I press the "Old running tunnels, Gambetta" link
+    Then the URL should be "/places/view/2"

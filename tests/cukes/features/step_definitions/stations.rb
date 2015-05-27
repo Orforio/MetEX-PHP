@@ -44,3 +44,14 @@ Then(/^I see the following connections:$/) do |table|
   
   table.diff! actual_connections
 end
+
+Then(/^there (?:are|is) (\d+) nearby place[s]?$/) do |number|
+  page.assert_selector('#nav-station-places li', :count => number)
+end
+
+Then(/^I see the following nearby places:$/) do |table|
+  found_connections = find('#nav-station-places').all('li')
+  actual_connections = found_connections.map { |connection| [connection.text] }
+  
+  table.diff! actual_connections
+end

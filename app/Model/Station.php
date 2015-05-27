@@ -173,6 +173,19 @@ class Station extends AppModel {
 			'limit' => '',
 			'offset' => '',
 			'finderQuery' => '',
+		),
+		'Place' => array(
+			'className' => 'Place',
+			'joinTable' => 'places_stations',
+			'foreignKey' => 'station_id',
+			'associationForeignKey' => 'place_id',
+			'unique' => 'keepExisting',
+			'conditions' => '',
+			'fields' => '',
+			'order' => 'name ASC',
+			'limit' => '',
+			'offset' => '',
+			'finderQuery' => '',
 		)
 	);
 

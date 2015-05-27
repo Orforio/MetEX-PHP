@@ -16,7 +16,7 @@ class ImageHelperTest extends CakeTestCase {
  * @var array
  */
 	public $fixtures = array(
-		'line', 'station', 'interchange', 'movement', 'image', 'station_movement', 'stock', 'place'
+		'line', 'station', 'interchange', 'movement', 'image', 'station_movement', 'stock', 'place', 'place_station'
 	);
 	
 /**

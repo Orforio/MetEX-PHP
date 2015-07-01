@@ -23,75 +23,42 @@ class Sound extends AppModel {
 		'id' => array(
 			'naturalNumber' => array(
 				'rule' => array('naturalNumber'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+				'message' => 'Invalid ID',
+				'allowEmpty' => false,
+				'required' => true,
+				'on' => 'update', // Limit validation to 'create' or 'update' operations
 			),
 		),
 		'station_id' => array(
 			'naturalNumber' => array(
 				'rule' => array('naturalNumber'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+				'message' => 'Invalid Station ID',
+				'allowEmpty' => false,
+				'required' => true,
 			),
 		),
 		'filename' => array(
 			'maxLength' => array(
-				'rule' => array('maxLength'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
-			),
-			'notEmpty' => array(
-				'rule' => array('notEmpty'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+				'rule' => array('maxLength', 255),
+				'message' => 'Invalid Filename',
+				'allowEmpty' => false,
+				'required' => true,
 			),
 		),
 		'title' => array(
 			'maxLength' => array(
-				'rule' => array('maxLength'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
-			),
-			'notEmpty' => array(
-				'rule' => array('notEmpty'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+				'rule' => array('maxLength', 255),
+				'message' => 'Invalid Title',
+				'allowEmpty' => false,
+				'required' => true,
 			),
 		),
 		'length' => array(
 			'time' => array(
-				'rule' => array('time'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
-			),
-			'notEmpty' => array(
-				'rule' => array('notEmpty'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+				'rule' => array('custom', '/^([0-5]?[0-9]:[0-5][0-9]|[0-5]?[0-9])$/'),	// Captures mm:ss or just ss
+				'message' => 'Invalid Time',
+				'allowEmpty' => false,
+				'required' => true,
 			),
 		),
 	);
@@ -112,4 +79,32 @@ class Sound extends AppModel {
 			'order' => ''
 		)
 	);
+	
+/**
+ * beforeSave callback
+ *
+ * @return boolean
+ */
+	public function beforeSave($options = array()) {	// Turns 00:00 or 00 user input into 00:00:00 for database
+		if ($this->data['Sound']['length']) {
+			$this->data['Sound']['length'] = $this->bSFormatLength($this->data['Sound']['length']);
+		} else {
+			return false;
+		}
+		
+		return true;
+	}
+		
+	public function bSFormatLength($length = null) {
+		if ($length && (strlen($length) <= 8)) {
+			if (strlen($length) <= 2) {
+				$length = '00:00:' . $length;
+			} else {
+				$length = '00:' . $length;
+			}
+			$length = date('H:i:s', strtotime($length));
+		}
+		
+		return $length;
+	}
 }

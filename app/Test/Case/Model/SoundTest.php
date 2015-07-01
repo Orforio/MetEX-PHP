@@ -13,16 +13,16 @@ class SoundTest extends CakeTestCase {
  * @var array
  */
 	public $fixtures = array(
-		'app.sound',
-		'app.station',
-		'app.line',
-		'app.stock',
-		'app.interchange',
-		'app.movement',
-		'app.stations_movement',
-		'app.image',
-		'app.place',
-		'app.places_station'
+		'sound',
+		'station',
+		'line',
+		'stock',
+		'interchange',
+		'movement',
+		'station_movement',
+		'image',
+		'place',
+		'place_station'
 	);
 
 /**
@@ -44,6 +44,18 @@ class SoundTest extends CakeTestCase {
 		unset($this->Sound);
 
 		parent::tearDown();
+	}
+	
+/**
+ * testBSFormatLength method
+ *
+ * @return void
+ */
+	public function testBSFormatLength() {
+		$this->assertEquals('00:00:05', $this->Sound->bSFormatLength('5'));
+		$this->assertEquals('00:00:42', $this->Sound->bSFormatLength('42'));
+		$this->assertEquals('00:01:02', $this->Sound->bSFormatLength('1:02'));
+		$this->assertEquals('00:59:59', $this->Sound->bSFormatLength('59:59'));
 	}
 
 }

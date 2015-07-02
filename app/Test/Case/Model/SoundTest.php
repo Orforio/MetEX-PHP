@@ -45,6 +45,18 @@ class SoundTest extends CakeTestCase {
 
 		parent::tearDown();
 	}
+
+/**
+ * testAFFormatLength method
+ *
+ * @return void
+ */
+	public function testAFFormatLength() {
+		$this->assertEquals('00:05', $this->Sound->aFFormatLength('00:00:05'));
+		$this->assertEquals('00:42', $this->Sound->aFFormatLength('00:00:42'));
+		$this->assertEquals('01:02', $this->Sound->aFFormatLength('00:01:02'));
+		$this->assertEquals('59:59', $this->Sound->aFFormatLength('00:59:59'));
+	}
 	
 /**
  * testBSFormatLength method

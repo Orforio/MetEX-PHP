@@ -79,13 +79,28 @@ class Sound extends AppModel {
 			'order' => ''
 		)
 	);
+
+/**
+ * afterFind callback
+ *
+ * @return array
+ */
+	public function afterFind($results, $primary = false) {
+		foreach ($results as $key => $result) {
+			if (isset($result['Sound']['length'])) {
+				$results[$key]['Sound']['length'] = $this->aFFormatLength($result['Sound']['length']);
+			}
+		}
+		
+		return $results;
+	}
 	
 /**
  * beforeSave callback
  *
  * @return boolean
  */
-	public function beforeSave($options = array()) {	// Turns 00:00 or 00 user input into 00:00:00 for database
+	public function beforeSave($options = array()) {
 		if ($this->data['Sound']['length']) {
 			$this->data['Sound']['length'] = $this->bSFormatLength($this->data['Sound']['length']);
 		} else {
@@ -94,7 +109,27 @@ class Sound extends AppModel {
 		
 		return true;
 	}
+
+/**
+ * aFFormatLength function
+ * Turns hh:mm:ss database entry into mm:ss for user forms
+ *
+ * @return string
+ */
+	public function aFFormatLength($length = null) {
+		if ($length && (strlen($length) == 8)) {
+			$length = date('i:s', strtotime($length));
+		}
 		
+		return $length;
+	}
+
+/**
+ * bSFormatLength function
+ * Turns mm:ss or ss user input into hh:mm:ss for database entry
+ *
+ * @return string
+ */
 	public function bSFormatLength($length = null) {
 		if ($length && (strlen($length) <= 8)) {
 			if (strlen($length) <= 2) {

@@ -27,7 +27,10 @@
 			));
 			echo $this->Form->input('filename');
 			echo $this->Form->input('title');
-			echo $this->Form->input('length');
+			echo $this->Form->input('length', array(
+				'type' => 'text',
+				'placeholder' => '00:00'
+			));
 		?>
 		<?php
 			echo $this->Form->end(array(

@@ -17,7 +17,7 @@
 		<div class="col-md-8" id="content-station-photos">
 			<?php echo $this->Image->addStationSlideshow($station['Image']); ?>
 		</div>
-		<div class="col-md-4">
+		<div class="col-md-4" id="content-station-description">
 			<p><?php echo h($station['Station']['description']); ?></p>
 		</div>
 	</div>

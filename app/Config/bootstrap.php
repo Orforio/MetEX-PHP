@@ -115,3 +115,4 @@ CakeLog::config('error', array(
  */
 Configure::write('MetEX.imagepath', '/media/images/');
 Configure::write('MetEX.stationphotopath', 'stations/');
+Configure::write('MetEX.audiopath', '/media/audio/');

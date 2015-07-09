@@ -59,8 +59,10 @@ class SoundHelperTest extends CakeTestCase {
 		$stationMadeleineDataStripped = $stationMadeleineData['Sound'];
 		
 		$stationMadeleineExpectedHtml =
-			'<div>' .
-				'<audio autoplay="false">' .
+			'<div class="well well-sm h4">' .
+				'<span class="glyphicon glyphicon-headphones" aria-hidden="true"></span>' .
+				' Station ambience ' .
+				'<audio type="audio" controls="controls">' .
 					'<source src="/media/audio/ambient_2.mp3" type="audio/mpeg" />' .
 				'</audio>' .
 			'</div>';

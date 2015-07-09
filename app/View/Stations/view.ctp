@@ -18,6 +18,7 @@
 			<?php echo $this->Image->addStationSlideshow($station['Image']); ?>
 		</div>
 		<div class="col-md-4" id="content-station-description">
+			<?php echo $this->Sound->addStationsAmbience($station['Sound']); ?>
 			<p><?php echo h($station['Station']['description']); ?></p>
 		</div>
 	</div>

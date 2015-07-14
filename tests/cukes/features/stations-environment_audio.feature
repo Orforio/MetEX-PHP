@@ -1,5 +1,5 @@
 #encoding: utf-8
-@active
+
 Feature: Stations - Environment audio
   As a passenger,
   I want to be able to hear environmental audio in a Station
@@ -18,8 +18,8 @@ Feature: Stations - Environment audio
     Then there is 1 audio
     And I see "Station ambience"
     
-  Scenario: User starts audio
-    #pending
+#  Scenario: User starts audio
+#    TODO: Currently have no way of testing this
     
-  Scenario: User stops audio
-    #pending
+#  Scenario: User stops audio
+#    TODO: Currently have no way of testing this

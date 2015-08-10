@@ -9,7 +9,7 @@
 	</title>
 	<?php
 		echo $this->Html->meta('icon');
-		echo $this->Html->meta('viewport', 'width=device-width, initial-scale=1');
+		echo $this->Html->meta(array('name' => 'viewport', 'content' => 'width=device-width, initial-scale=1, maximum-scale=1'));
 
 		echo $this->Html->css('styles');
 

@@ -1,31 +1,31 @@
-<?php
-/**
- *
- *
- * CakePHP(tm) : Rapid Development Framework (http://cakephp.org)
- * Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
- *
- * Licensed under The MIT License
- * For full copyright and license information, please see the LICENSE.txt
- * Redistributions of files must retain the above copyright notice.
- *
- * @copyright     Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
- * @link          http://cakephp.org CakePHP(tm) Project
- * @package       app.View.Errors
- * @since         CakePHP(tm) v 0.10.0.1076
- * @license       http://www.opensource.org/licenses/mit-license.php MIT License
- */
-?>
-<h2><?php echo $name; ?></h2>
-<p class="error">
-	<strong><?php echo __d('cake', 'Error'); ?>: </strong>
-	<?php printf(
-		__d('cake', 'The requested address %s was not found on this server.'),
-		"<strong>'{$url}'</strong>"
-	); ?>
-</p>
-<?php
-if (Configure::read('debug') > 0):
-	echo $this->element('exception_stack_trace');
-endif;
-?>
+<?php $this->assign('title', 'Error'); ?>
+<div class="jumbotron">
+	<div class="container">
+		<h1>Error 404</h1>
+	</div>
+</div>
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-sm-12">
+			<div class="panel panel-danger">
+				<div class="panel-heading">
+					<h3><?php echo $name; ?></h3>
+				</div>
+				<div class="panel-body">
+					<p><?php printf(__d('cake', 'The requested address %s was not found on this server.'), "<strong>'{$url}'</strong>"); ?></p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<?php
+	if (Configure::read('debug') > 0):
+	?>
+	<div class="row">
+		<div class="col-sm-12">
+			<?php echo $this->element('exception_stack_trace'); ?>
+		</div>
+	</div>
+	<?php
+	endif;
+	?>
+</div>

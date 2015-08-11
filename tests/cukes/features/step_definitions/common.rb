@@ -18,7 +18,7 @@ end
 
 When(/^I visit "(.*?)"$/) do |url|
   visit(url)
-  page.title.should_not include "Errors"
+  page.title.should_not include "Error"
 end
 
 When(/^I try to visit "(.*?)"$/) do |url|
@@ -60,5 +60,5 @@ Then(/^I cannot click on "(.*?)"$/) do |text|
 end
 
 Then(/^I see an error message$/) do
-  page.should have_text("Error:")
+  page.should have_text("Error")
 end

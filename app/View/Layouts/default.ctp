@@ -45,7 +45,7 @@
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-xs-12">
-				<p class="well well-sm text-center"><small>&copy;2005-2015 Richard Whittaker - Milestone <em>Abbesses</em> - <?php echo $this->Html->link('Please report any bugs on GitHub', 'https://github.com/PkerUNO/MetEX/issues', array('confirm' => 'Please report only bugs and suggestions to do with the workings of the site and not the content. I am aware the line data and photos are out of date, these will be updated in a future version.')); ?></small></p>
+				<p class="well well-sm text-center"><small>&copy;2005-2015 Richard Whittaker - Milestone <em>Bercy</em> - <?php echo $this->Html->link('Please report any bugs on GitHub', 'https://github.com/PkerUNO/MetEX/issues', array('confirm' => 'Please report only bugs and suggestions to do with the workings of the site and not the content. I am aware the line data and photos are out of date, these will be updated in a future version.')); ?></small></p>
 			</div>
 		</div>
 	</div>
